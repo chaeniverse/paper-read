@@ -1,13 +1,21 @@
 import { NextResponse } from "next/server";
 import { getNote, saveNote } from "@/lib/db";
+import { slugs } from "@/lib/paper";
 
 export const dynamic = "force-dynamic";
 
-// Returns the current note body. If the DB is not configured yet,
-// degrade gracefully so the UI still loads (empty note).
-export async function GET() {
+const valid = (id: unknown): id is string =>
+  typeof id === "string" && slugs.includes(id);
+
+// Returns the note body for a given paper (?id=<slug>).
+// Degrades gracefully (empty note) if the DB is not configured yet.
+export async function GET(req: Request) {
+  const id = new URL(req.url).searchParams.get("id");
+  if (!valid(id)) {
+    return NextResponse.json({ body: "", error: "unknown_paper" }, { status: 400 });
+  }
   try {
-    const body = await getNote();
+    const body = await getNote(id);
     return NextResponse.json({ body });
   } catch (err: any) {
     return NextResponse.json(
@@ -17,11 +25,14 @@ export async function GET() {
   }
 }
 
-// Auto-save: upsert the note body. No explicit "save" button on the client.
+// Auto-save: upsert the note body for a paper. No explicit "save" button.
 export async function PUT(req: Request) {
   try {
-    const { body } = await req.json();
-    await saveNote(typeof body === "string" ? body : "");
+    const { id, body } = await req.json();
+    if (!valid(id)) {
+      return NextResponse.json({ ok: false, error: "unknown_paper" }, { status: 400 });
+    }
+    await saveNote(typeof body === "string" ? body : "", id);
     return NextResponse.json({ ok: true });
   } catch (err: any) {
     return NextResponse.json(

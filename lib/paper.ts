@@ -1,4 +1,4 @@
-import raw from "@/data/paper.json";
+import { papersData } from "@/data/papers.index";
 
 export type Item =
   | { type: "title"; text: string }
@@ -11,8 +11,24 @@ export type Item =
   | { type: "figure"; num: number; src: string }
   | { type: "table"; num: number; src: string };
 
-export const items = raw.items as Item[];
+export type Paper = {
+  slug: string;
+  title: string;
+  authors: string;
+  venue?: string;
+  year?: number;
+  abstract?: string;
+  pdf?: string; // filename under /public/pdfs
+  items: Item[];
+};
 
-export const paperTitle =
-  (items.find((i) => i.type === "title") as { text: string } | undefined)?.text ??
-  "Paper";
+// All papers, newest first (by year, then title).
+export const papers: Paper[] = (papersData as Paper[])
+  .slice()
+  .sort((a, b) => (b.year ?? 0) - (a.year ?? 0) || a.title.localeCompare(b.title));
+
+export function getPaper(slug: string): Paper | undefined {
+  return (papersData as Paper[]).find((p) => p.slug === slug);
+}
+
+export const slugs = (papersData as Paper[]).map((p) => p.slug);

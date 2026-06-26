@@ -4,19 +4,26 @@ import { useCallback, useEffect, useRef, useState } from "react";
 
 type Status = "idle" | "saving" | "saved" | "error";
 
-export default function NotesWidget() {
+export default function NotesWidget({
+  paperSlug,
+  paperTitle,
+}: {
+  paperSlug: string;
+  paperTitle?: string;
+}) {
   const [open, setOpen] = useState(false);
   const [text, setText] = useState("");
   const [status, setStatus] = useState<Status>("idle");
   const [loaded, setLoaded] = useState(false);
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const taRef = useRef<HTMLTextAreaElement | null>(null);
+  const url = `/api/note?id=${encodeURIComponent(paperSlug)}`;
 
   // Load the saved note the first time the pad is opened.
   useEffect(() => {
     if (!open || loaded) return;
     let alive = true;
-    fetch("/api/note")
+    fetch(url)
       .then((r) => r.json())
       .then((d) => {
         if (!alive) return;
@@ -30,19 +37,22 @@ export default function NotesWidget() {
     };
   }, [open, loaded]);
 
-  const save = useCallback(async (body: string) => {
-    setStatus("saving");
-    try {
-      const r = await fetch("/api/note", {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ body }),
-      });
-      setStatus(r.ok ? "saved" : "error");
-    } catch {
-      setStatus("error");
-    }
-  }, []);
+  const save = useCallback(
+    async (body: string) => {
+      setStatus("saving");
+      try {
+        const r = await fetch("/api/note", {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ id: paperSlug, body }),
+        });
+        setStatus(r.ok ? "saved" : "error");
+      } catch {
+        setStatus("error");
+      }
+    },
+    [paperSlug]
+  );
 
   // Debounced auto-save on every keystroke. No save button.
   const onChange = (v: string) => {
@@ -59,13 +69,15 @@ export default function NotesWidget() {
         clearTimeout(timer.current);
         navigator.sendBeacon?.(
           "/api/note",
-          new Blob([JSON.stringify({ body: text })], { type: "application/json" })
+          new Blob([JSON.stringify({ id: paperSlug, body: text })], {
+            type: "application/json",
+          })
         );
       }
     };
     window.addEventListener("beforeunload", flush);
     return () => window.removeEventListener("beforeunload", flush);
-  }, [text]);
+  }, [text, paperSlug]);
 
   const close = () => {
     if (timer.current) {
@@ -103,7 +115,7 @@ export default function NotesWidget() {
                   ? "저장 실패"
                   : status === "saved"
                   ? "저장됨"
-                  : "메모"}
+                  : paperTitle || "메모"}
               </span>
             </div>
             <button className="note-close" onClick={close} aria-label="Close notes">
