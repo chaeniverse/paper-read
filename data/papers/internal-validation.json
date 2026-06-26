@@ -65,10 +65,6 @@
    "text": "65 years, high risk (anterior infarct location or previous MI), diabetes, hypotension (systolic blood pressure"
   },
   {
-   "type": "p",
-   "text": "\u0003"
-  },
-  {
    "type": "h2",
    "num": "100",
    "text": "mmHg), tachycardia (pulse"
@@ -79,31 +75,11 @@
   },
   {
    "type": "p",
-   "text": "\u0004"
-  },
-  {
-   "type": "p",
-   "text": "\u0003"
-  },
-  {
-   "type": "p",
    "text": "1 hr, female gender [19]. Characteristics of these predictors in the GUSTO-I data set were previously described [16,18]. In addition to prespecified models, some evaluations were performed for stepwise selected models. We applied stepwise selection with backward elimination of predictors from the full eight-predictor model with"
   },
   {
    "type": "p",
-   "text": "\u0003"
-  },
-  {
-   "type": "p",
    "text": ".05 for exclusion."
-  },
-  {
-   "type": "p",
-   "text": "P"
-  },
-  {
-   "type": "p",
-   "text": "\u0005"
   },
   {
    "type": "p",
@@ -114,181 +90,17 @@
    "text": "10 and 7.0% mortality, all training and test samples consisted of 1145 and 39,685 patients, with 80 and 2771 deaths, respectively. Predictive performance was estimated on the training sample (‘apparent’ or ‘resubstitution’ performance) and on the test data (test performance, considered as ‘gold standard’). Further, we used the apparent performance of the model fitted in the total GUSTO-I data set as a reference for what performance might maximally be obtained. The large size of the total GUSTO-I data set makes sure that the optimism in this performance estimate is negligible."
   },
   {
-   "type": "p",
-   "text": "\u0002"
-  },
-  {
    "type": "h3",
    "num": "2.3",
    "text": "Predictive performance"
   },
   {
    "type": "p",
-   "text": "Several measures of predictive performance were considered. Discrimination refers to the ability to distinguish high-risk subjects from low-risk subjects, and is commonly quantified by a measure of concordance, the"
+   "text": "Several measures of predictive performance were considered. Discrimination refers to the ability to distinguish high-risk subjects from low-risk subjects, and is commonly quantified by a measure of concordance, the statistic. For binary outcomes, is identical to the area under the receiver operating characteristic (ROC) curve; varies between 0.5 and 1.0 for sensible models (the higher the better) [1,11,20]. Calibration refers to whether the predicted probabilities agree with the observed probabilities. A common problem of prediction models is that predictions for new subjects are too extreme (i.e, that the observed probability of the outcome is higher than predicted for low-risk subjects and lower than predicted for high-risk subjects) [1,4,20]. To quantify this miscalibration we studied the slope of the linear predictor (‘calibration slope’), as originally proposed by Cox [21]. The calibration slope is the regression coefficient in a logistic model with the linear predictor as the only covariate: observed mortality linear predictor [20]. The observed mortality is coded binary (0/1), and the prognostic index is calculated as the linear combination of the regression coefficients as estimated in a sample with the values of the covariables for each patient in the test data. Well-calibrated models have a slope of 1, while models providing too extreme predictions have a slope less than 1. The slope of the linear predictor is identical to the uniform ‘shrinkage’ factor, as discussed by others [2,5]. Furthermore, we studied measures that quantify the overall accuracy of predictions. The Brier score (or average prediction error) is calculated as denotes the observed outcome and the prediction for subject in the data set of subjects [22]. For sensible models the Brier score ranges from 0 (perfect) to 0.25 (worthless). Next, the statistic was used, which is calculated as (model chi-square is the number of subjects [11]."
   },
   {
    "type": "p",
-   "text": "statistic. For binary outcomes,"
-  },
-  {
-   "type": "p",
-   "text": "c"
-  },
-  {
-   "type": "p",
-   "text": "is identical to the area under the receiver operating characteristic (ROC) curve;"
-  },
-  {
-   "type": "p",
-   "text": "c"
-  },
-  {
-   "type": "p",
-   "text": "varies between 0.5 and 1.0 for sensible models (the higher the better) [1,11,20]. Calibration refers to whether the predicted probabilities agree with the observed probabilities. A common problem of prediction models is that predictions for new subjects are too extreme (i.e, that the observed probability of the outcome is higher than predicted for low-risk subjects and lower than predicted for high-risk subjects) [1,4,20]. To quantify this miscalibration we studied the slope of the linear predictor (‘calibration slope’), as originally proposed by Cox [21]. The calibration slope is the regression coefficient"
-  },
-  {
-   "type": "p",
-   "text": "c"
-  },
-  {
-   "type": "p",
-   "text": "in a logistic model with the linear predictor as the only covariate: observed mortality"
-  },
-  {
-   "type": "p",
-   "text": "\u0006"
-  },
-  {
-   "type": "p",
-   "text": "linear predictor [20]. The observed mortality is coded binary (0/1), and the prognostic index is calculated as the linear combination of the regression coefficients as estimated in a sample with the values of the covariables for each patient in the test data. Well-calibrated models have a slope of 1, while models providing too extreme predictions have a slope less than 1. The slope of the linear predictor is identical to the uniform ‘shrinkage’ factor, as discussed by others [2,5]. Furthermore, we studied measures that quantify the overall accuracy of predictions. The Brier score (or average prediction error) is calculated as"
-  },
-  {
-   "type": "p",
-   "text": "\u0002"
-  },
-  {
-   "type": "p",
-   "text": "\u0007"
-  },
-  {
-   "type": "p",
-   "text": "\b"
-  },
-  {
-   "type": "p",
-   "text": "\u0006"
-  },
-  {
-   "type": "p",
-   "text": ")"
-  },
-  {
-   "type": "p",
-   "text": "/"
-  },
-  {
-   "type": "p",
-   "text": ", where"
-  },
-  {
-   "type": "p",
-   "text": "denotes the observed outcome and"
-  },
-  {
-   "type": "p",
-   "text": "("
-  },
-  {
-   "type": "p",
-   "text": "p"
-  },
-  {
-   "type": "p",
-   "text": "n"
-  },
-  {
-   "type": "p",
-   "text": "y"
-  },
-  {
-   "type": "p",
-   "text": "y"
-  },
-  {
-   "type": "p",
-   "text": "the prediction for subject"
-  },
-  {
-   "type": "p",
-   "text": "in the data set of"
-  },
-  {
-   "type": "p",
-   "text": "p"
-  },
-  {
-   "type": "p",
-   "text": "i"
-  },
-  {
-   "type": "p",
-   "text": "subjects [22]. For sensible models the Brier score ranges from 0 (perfect) to 0.25 (worthless). Next, the"
-  },
-  {
-   "type": "p",
-   "text": "n"
-  },
-  {
-   "type": "p",
-   "text": "D"
-  },
-  {
-   "type": "p",
-   "text": "statistic was used, which is calculated as (model chi-square"
-  },
-  {
-   "type": "p",
-   "text": "1) /"
-  },
-  {
-   "type": "p",
-   "text": ", where"
-  },
-  {
-   "type": "p",
-   "text": "is the number of subjects [11]."
-  },
-  {
-   "type": "p",
-   "text": "is a scaled version of the model chi-square, which is calculated on the log-likelihood scale and which is closely related to the Kullback–Leibler distance. We note that the Brier score is a quadratic scoring rule, and"
-  },
-  {
-   "type": "p",
-   "text": "n"
-  },
-  {
-   "type": "p",
-   "text": "n"
-  },
-  {
-   "type": "p",
-   "text": "D"
-  },
-  {
-   "type": "p",
-   "text": "a logarithmic one [23]. Finally, we studied Nagelkerke’s"
-  },
-  {
-   "type": "p",
-   "text": "D"
-  },
-  {
-   "type": "p",
-   "text": "as a measure of explained variation, which is calculated on the log-likelihood scale [24]."
-  },
-  {
-   "type": "p",
-   "text": "R"
+   "text": "is a scaled version of the model chi-square, which is calculated on the log-likelihood scale and which is closely related to the Kullback–Leibler distance. We note that the Brier score is a quadratic scoring rule, and a logarithmic one [23]. Finally, we studied Nagelkerke’s as a measure of explained variation, which is calculated on the log-likelihood scale [24]."
   },
   {
    "type": "h3",
@@ -306,243 +118,15 @@
   },
   {
    "type": "p",
-   "text": "10% cross-validation). Cross-validation with leaving single subjects out (the ‘jackknife’) was not studied, since many of the performance measures that we studied cannot be evaluated for single subjects. When stepwise selection was applied, it was applied in every training sample. Bootstrap resampling started with fitting the logistic model in a bootstrap sample of"
+   "text": "10% cross-validation). Cross-validation with leaving single subjects out (the ‘jackknife’) was not studied, since many of the performance measures that we studied cannot be evaluated for single subjects. When stepwise selection was applied, it was applied in every training sample. Bootstrap resampling started with fitting the logistic model in a bootstrap sample of subjects, which was drawn with replacement from the original sample [7]. Averages of performance measures were taken over 100 repetitions (EPV 5, 10, 20) or 50 repetitions (EPV 40 or 80). These numbers were chosen since it was found that higher numbers only marginally improved the estimates. When stepwise selection was applied, it was applied in every bootstrap sample. For the regular bootstrap procedure, the model as estimated in the bootstrap sample was evaluated in the bootstrap sample and in the original sample. The performance in the bootstrap sample represents estimation of the apparent performance, and the performance in the original sample represents test performance. The difference between these performances is an estimate of the optimism in the apparent performance. This difference is averaged to obtain a stable estimate of the optimism. The optimism is subtracted from the apparent performance to estimate the internally validated performance [7]: estimated performance apparent performance average(bootstrap performance test performance). Furthermore, two bootstrap resampling variants were studied: the .632 and .632 method. With the .632 method, the model as estimated in the bootstrap sample was evaluated on the subjects not sampled [3]. This method can be seen as a direct extension of cross-validation, since the evaluation is on independent data. On average, 63.2% of the subjects are at least once included in a bootstrap sample, giving the method its name. The estimated performance is a weighted combination of apparent and test performance: estimated performance apparent performance test performance. Efron developed the .632 method only for the case where the performance measure being bootstrapped is estimated on a per-subject basis (e.g., misclassification error) [3]. A natural generalization of this method can be derived by assuming that the accuracy evaluated on subject that is omitted from a bootstrap sample has the same expectation as the accuracy of any other subject that would be omitted from the sample. The test performance can then be calculated as the weighted average of the performance in the test samples, with weights based on the frequency of inclusion of observation in the bootstrap samples. More details on this implementation can be found elsewhere [25]. Finally, the .632 method was applied, which is an extension of the .632 method. Here, the weights for the estimated performance are dependent on the amount of overfitting [8]: estimated performance apparent performance test performance. The weight is determined by the relative overfitting determined by the ratio of the difference in test and apparent performance to the difference between ‘no information’ and apparent performance:"
   },
   {
    "type": "p",
-   "text": "subjects, which was drawn with replacement from the original sample [7]. Averages of performance measures were taken over 100 repetitions (EPV 5, 10, 20) or 50 repetitions (EPV 40 or 80). These numbers were chosen since it was found that higher numbers only marginally improved the estimates. When stepwise selection was applied, it was applied in every bootstrap sample. For the regular bootstrap procedure, the model as estimated in the bootstrap sample was evaluated in the bootstrap sample and in the original sample. The performance in the bootstrap sample represents estimation of the apparent performance, and the performance in the original sample represents test performance. The difference between these performances is an estimate of the optimism in the apparent performance. This difference is averaged to obtain a stable estimate of the optimism. The optimism is subtracted from"
+   "text": "(test performance apparent performance ) /(‘no information’ performance apparent performance). Hence, the relative overfitting is large when the difference between test and apparent performance is relatively large. In this case, approach 1, implying that the performance estimated is largely based on the test performance estimate. When the overfitting is small, approaches 0 and"
   },
   {
    "type": "p",
-   "text": "n"
-  },
-  {
-   "type": "p",
-   "text": "the apparent performance to estimate the internally validated performance [7]: estimated performance"
-  },
-  {
-   "type": "p",
-   "text": "apparent performance"
-  },
-  {
-   "type": "p",
-   "text": "\u0002"
-  },
-  {
-   "type": "p",
-   "text": "average(bootstrap performance"
-  },
-  {
-   "type": "p",
-   "text": "test performance). Furthermore, two bootstrap resampling variants were studied: the .632 and .632"
-  },
-  {
-   "type": "p",
-   "text": "method. With the .632 method, the model as estimated in the bootstrap sample was evaluated on the subjects not sampled [3]. This method can be seen as a direct extension of cross-validation, since the evaluation is on independent data. On average, 63.2% of the subjects are at least once included in a bootstrap sample, giving the method its name. The estimated performance is a weighted combination of apparent and test performance: estimated performance"
-  },
-  {
-   "type": "p",
-   "text": "\b"
-  },
-  {
-   "type": "p",
-   "text": ".368"
-  },
-  {
-   "type": "p",
-   "text": "apparent performance"
-  },
-  {
-   "type": "p",
-   "text": "\u0002"
-  },
-  {
-   "type": "p",
-   "text": "\b"
-  },
-  {
-   "type": "p",
-   "text": "0.632"
-  },
-  {
-   "type": "p",
-   "text": "test performance. Efron developed the .632 method only for the case where the performance measure being bootstrapped is estimated on a per-subject basis (e.g., misclassification error) [3]. A natural generalization of this method can be derived by assuming that the accuracy evaluated on subject"
-  },
-  {
-   "type": "p",
-   "text": "that is omitted from a bootstrap sample has the same expectation as the accuracy of any other subject that would be omitted from the sample. The test performance can then be calculated as the weighted average of the performance in the test samples, with weights based on the frequency of inclusion of observation"
-  },
-  {
-   "type": "p",
-   "text": "i"
-  },
-  {
-   "type": "p",
-   "text": "in the bootstrap samples. More details on this implementation can be found elsewhere [25]. Finally, the .632"
-  },
-  {
-   "type": "p",
-   "text": "i"
-  },
-  {
-   "type": "p",
-   "text": "method was applied, which is an extension of the .632 method. Here, the weights for the estimated performance are dependent on the amount of overfitting [8]: estimated performance"
-  },
-  {
-   "type": "p",
-   "text": "\b"
-  },
-  {
-   "type": "p",
-   "text": "(1"
-  },
-  {
-   "type": "p",
-   "text": ")"
-  },
-  {
-   "type": "p",
-   "text": "apparent performance"
-  },
-  {
-   "type": "p",
-   "text": "w"
-  },
-  {
-   "type": "p",
-   "text": "\u0002"
-  },
-  {
-   "type": "p",
-   "text": "\b"
-  },
-  {
-   "type": "p",
-   "text": "test performance. The weight"
-  },
-  {
-   "type": "p",
-   "text": "is determined by the relative overfitting"
-  },
-  {
-   "type": "p",
-   "text": "w"
-  },
-  {
-   "type": "p",
-   "text": "w"
-  },
-  {
-   "type": "p",
-   "text": ":"
-  },
-  {
-   "type": "p",
-   "text": ".632 / (1"
-  },
-  {
-   "type": "p",
-   "text": ".368"
-  },
-  {
-   "type": "p",
-   "text": "), with"
-  },
-  {
-   "type": "p",
-   "text": "R"
-  },
-  {
-   "type": "p",
-   "text": "w"
-  },
-  {
-   "type": "p",
-   "text": "R"
-  },
-  {
-   "type": "p",
-   "text": "R"
-  },
-  {
-   "type": "p",
-   "text": "\u0002"
-  },
-  {
-   "type": "p",
-   "text": "determined by the ratio of the difference in test and apparent performance to the difference between ‘no information’ and apparent performance:"
-  },
-  {
-   "type": "p",
-   "text": "(test performance"
-  },
-  {
-   "type": "p",
-   "text": "apparent performance ) /(‘no information’ performance"
-  },
-  {
-   "type": "p",
-   "text": "R"
-  },
-  {
-   "type": "p",
-   "text": "\u0002"
-  },
-  {
-   "type": "p",
-   "text": "apparent performance). Hence, the relative overfitting"
-  },
-  {
-   "type": "p",
-   "text": "is large when the difference between test and apparent performance is relatively large. In this case,"
-  },
-  {
-   "type": "p",
-   "text": "R"
-  },
-  {
-   "type": "p",
-   "text": "and"
-  },
-  {
-   "type": "p",
-   "text": "approach 1, implying that"
-  },
-  {
-   "type": "p",
-   "text": "R"
-  },
-  {
-   "type": "p",
-   "text": "w"
-  },
-  {
-   "type": "p",
-   "text": "the performance estimated is largely based on the test performance estimate. When the overfitting is small,"
-  },
-  {
-   "type": "p",
-   "text": "approaches 0 and"
-  },
-  {
-   "type": "p",
-   "text": "R"
-  },
-  {
-   "type": "p",
-   "text": "0.632, resulting in similarity between the .632 and .632"
-  },
-  {
-   "type": "p",
-   "text": "w"
-  },
-  {
-   "type": "p",
-   "text": "method. The ‘no information’ performance can sometimes be calculated with relatively simple analytical solutions (e.g., for the misclassification error) [8]. Since we included non-per-subject measures, this was not directly possible. We approximated the ‘no information’ performance by taking the average of the performance in the original sample where the outcome was randomly permuted, repeated as often as the number of bootstraps (100 or 50 repetitions). For example, the average no information performance was 0.5 for the c statistic."
-  },
-  {
-   "type": "p",
-   "text": "\b"
+   "text": "0.632, resulting in similarity between the .632 and .632 method. The ‘no information’ performance can sometimes be calculated with relatively simple analytical solutions (e.g., for the misclassification error) [8]. Since we included non-per-subject measures, this was not directly possible. We approximated the ‘no information’ performance by taking the average of the performance in the original sample where the outcome was randomly permuted, repeated as often as the number of bootstraps (100 or 50 repetitions). For example, the average no information performance was 0.5 for the c statistic."
   },
   {
    "type": "h3",
@@ -565,16 +149,12 @@
   },
   {
    "type": "p",
-   "text": "In Fig. 1 we show the apparent and test performance of the logistic regression model with eight predictors in relation to sample size, as indicated by the number of events per variable (EPV). The apparent performance was determined on random samples from the GUSTO-I data set, with sample sizes (number of deaths) of n \u0002 572 (40), n \u0002 1145 (80), n \u0002 2291 (160), n \u0002 4582 (320), n \u0002 9165 (640) for EPV 5, 10, 20, 40, and 80, respectively. For all performance measures, we note optimism in the apparent performance [i.e., the model performance in independent data (‘test’) was on average worse than the performance in the sample where the model was constructed (‘apparent’)]. The optimism was"
+   "text": "In Fig. 1 we show the apparent and test performance of the logistic regression model with eight predictors in relation to sample size, as indicated by the number of events per variable (EPV). The apparent performance was determined on random samples from the GUSTO-I data set, with sample sizes (number of deaths) of n \u0002 572 (40), n \u0002 1145 (80), n \u0002 2291 (160), n \u0002 4582 (320), n \u0002 9165 (640) for EPV 5, 10, 20, 40, and 80, respectively. For all performance measures, we note optimism in the apparent performance [i.e., the model performance in independent data (‘test’) was on average worse than the performance in the sample where the model was constructed (‘apparent’)]. The optimism was largest for small sample sizes, where the apparent performance was clearly estimated above the line, indicating the performance in the total GUSTO-I data set. The test performance clearly below it. With large sample size (EPV \u0002 40 or 80) the median apparent and test performance were close to the performance in the total data set. In addition to a reduction in optimism, we also note a reduction in the variability of the model performance estimates with increasing sample size. For example, for EPV \u0002 5, the median apparent c was 0.807 and the median test c 0.774, while these numbers were 0.795 and 0.791 for EPV \u0002 40, with c .0793 in the total data set. The apparent c overestimated the test c in 84% of the samples with EPV \u0002 5, while this percentage decreased to 64% for EPV \u0002 40."
   },
   {
    "type": "figure",
    "num": 1,
    "src": "fig1.png"
-  },
-  {
-   "type": "p",
-   "text": "largest for small sample sizes, where the apparent performance was clearly estimated above the line, indicating the performance in the total GUSTO-I data set. The test performance clearly below it. With large sample size (EPV \u0002 40 or 80) the median apparent and test performance were close to the performance in the total data set. In addition to a reduction in optimism, we also note a reduction in the variability of the model performance estimates with increasing sample size. For example, for EPV \u0002 5, the median apparent c was 0.807 and the median test c 0.774, while these numbers were 0.795 and 0.791 for EPV \u0002 40, with c .0793 in the total data set. The apparent c overestimated the test c in 84% of the samples with EPV \u0002 5, while this percentage decreased to 64% for EPV \u0002 40."
   },
   {
    "type": "h3",
@@ -583,16 +163,7 @@
   },
   {
    "type": "p",
-   "text": "In Fig. 2, we show the bias and variability for a selected number of procedures to estimate the model performance in independent data for EPV \u0002 10 (n \u0002 1145, 80 deaths). We note that the apparent performance was optimistic but had relatively low variability. The split-half method underestimated model performance and had larger variability. The"
-  },
-  {
-   "type": "figure",
-   "num": 2,
-   "src": "fig2.png"
-  },
-  {
-   "type": "p",
-   "text": "split 1/3 method had lower bias but larger variability. Compared with the split-half method, cross-validation on 50% of the sample resulted in a similar bias but slightly reduced variability. The 10% cross-validation procedure resulted in very low bias for most measures, except for calibration slope and R2, where a substantial overestimation occurred. The regular bootstrap resulted in the most accurate estimates of model performance: the bias was close to zero and the variability similar to that of the apparent performance. Further results of the validation techniques are presented in Table 2 for EPV \u0002 10, focusing on bias and RMSE. We found that the split-sample approaches led to a larger RMSE than using the apparent performance as estimate of internal validity. Cross-validation gave best results when 10% was used as a test set, and the procedure repeated 10 times. Tenfold repetition led to a reduction in RMSE of around 15% for EPV \u0002 10. The .632 variant of the bootstrap gave somewhat more pessimistic estimates of performance than the regular bootstrap procedure, but had a similar RMSE for the c statistic and calibration slope, a worse RMSE for the Brier"
+   "text": "In Fig. 2, we show the bias and variability for a selected number of procedures to estimate the model performance in independent data for EPV \u0002 10 (n \u0002 1145, 80 deaths). We note that the apparent performance was optimistic but had relatively low variability. The split-half method underestimated model performance and had larger variability. The split 1/3 method had lower bias but larger variability. Compared with the split-half method, cross-validation on 50% of the sample resulted in a similar bias but slightly reduced variability. The 10% cross-validation procedure resulted in very low bias for most measures, except for calibration slope and R2, where a substantial overestimation occurred. The regular bootstrap resulted in the most accurate estimates of model performance: the bias was close to zero and the variability similar to that of the apparent performance. Further results of the validation techniques are presented in Table 2 for EPV \u0002 10, focusing on bias and RMSE. We found that the split-sample approaches led to a larger RMSE than using the apparent performance as estimate of internal validity. Cross-validation gave best results when 10% was used as a test set, and the procedure repeated 10 times. Tenfold repetition led to a reduction in RMSE of around 15% for EPV \u0002 10. The .632 variant of the bootstrap gave somewhat more pessimistic estimates of performance than the regular bootstrap procedure, but had a similar RMSE for the c statistic and calibration slope, a worse RMSE for the Brier score, and a lower RMSE for D (scaled chi-square) and R2. The .632\b was by definition more pessimistic in estimating performance than the .632 method. It did not lead to a lower RMSE in our evaluations."
   },
   {
    "type": "table",
@@ -600,8 +171,9 @@
    "src": "table2.png"
   },
   {
-   "type": "p",
-   "text": "score, and a lower RMSE for D (scaled chi-square) and R2. The .632\b was by definition more pessimistic in estimating performance than the .632 method. It did not lead to a lower RMSE in our evaluations."
+   "type": "figure",
+   "num": 2,
+   "src": "fig2.png"
   },
   {
    "type": "h3",
@@ -628,19 +200,7 @@
   },
   {
    "type": "p",
-   "text": "Accurate estimation of the internal validity of a predictive regression model is especially problematic when the sample size is small. The apparent performance as estimated in the sample then is a substantial overestimation of the true performance in similar subjects. In our study, split-sample approaches underestimated performance and showed high variability. In contrast, bootstrap resampling resulted in stable and nearly unbiased estimates of performance. Methods to assess internal validity vary in the amount of data that are used to estimate the model and the amount of data kept out to test the model (Table 1). With the split-half"
-  },
-  {
-   "type": "p",
-   "text": "approach, the performance of the full model was underestimated since only half of the data was used to construct the model. Also, the estimate was very unstable, since half of the sample was used for validation. When we used two thirds of the data for model construction, the bias decreased, but the variability increased substantially. In total, this resulted in less accurate estimates of the internal validity, as quantified by the root mean squared error. With regular bootstrapping, we constructed and validated the model in data sets with 100% of the number of subjects. We note that the apparent performance has this same property: 100% of the sample is used for construction and validation. Apparent estimates were stable but biased, while bootstrap estimates were nearly unbiased and only slightly more variable. A reasonable compromise was cross-validation on 10% of the sample, where 90% was used for construction. The bias was generally small since 90% is close to 100%. Also, stability was satisfactory, which is explained by the fact that repetition of the procedure causes 100% of the data to be eventually used for validation. Stability could be further improved by repeating the whole procedure. We note that all internal validation procedures lead to an increase in variability compared with the apparent estimates, because all estimated corrections for the optimism in the apparent estimates are associated with some uncertainty. This uncertainty adds variability to the variability in the apparent estimate, which is inherent to data sets of finite sample size. Note that this uncertainty does decrease but does not disappear by increasing the number of repetitions [7]. Comparing cross-validation and bootstrapping, we note that cross-validation has the advantage that the procedure can intuitively be understood as a simple extension of the split-sample approach. In contrast, bootstrapping may be viewed by some as a statistical trick. A disadvantage was that cross-validation could not accurately estimate all performance measures; this may be explained by nonnormal distributions of performance measures such as calibration slope and R2. Computer time is shorter for cross-validation techniques, but this can currently hardly be considered relevant. Taking 50 to 100 bootstrap repetitions was sufficient in our simulations, but a somewhat higher number (e.g., 200 repetitions) may be advisable in practice. Further, a thor-"
-  },
-  {
-   "type": "p",
-   "text": "ough theory has been developed to support the bootstrap as a quite universal validation technique [7]. We found that bootstrapping led to accurate estimates of model performance both for a prespecified model and a stepwise selected model. When the model is specified according to the data under study, such as stepwise selection of covariables, a good fit of the model to the data may be obtained. However, the apparent estimate of model performance will be considerably optimistic [1,6,26]. Moreover, the performance in independent data may be worse than that of a prespecified model [4,11], most markedly when the model was constructed in a small data set [18]. Model specification may include procedures that are automatic, such as stepwise selection, and procedures that are more subjective, such as collapsing categorical predictors based on the observed relationship with the outcome. As illustrated in our study, automatic procedures can readily be included in the evaluation of a predictive model [1,27]. When not all modeling decisions can systematically be replayed, one might ignore these decisions and calculate a bootstrap estimate as an upper limit of expected performance. We focused on accurate estimation of the performance of a predictive model based on the full sample. If the final model were constructed on part of the sample (e.g., half or two thirds), this reduction in sample size logically resulted in a poorer performance. Although this sacrificing of subjects for validation purposes is quite common, it should be considered a waste of data [28]. If a split-sample procedure was followed for validation, it is natural that the final model should nevertheless be based on the full sample [1]. This implies that the procedure that was used to derive the predictive model, including any model specification steps such as recoding and selection of covariables, should finally be performed in the full sample. Assessments of internal validity may serve multiple purposes. First, the quality of the predictive model indicates the potential usefulness in clinical practice. For example, a model with low discriminative power (e.g., a c statistic of around 0.6) [29] will not well be able to define high-risk groups, in contrast to a model with a c statistic of, for example, over 0.95 [30]. A variety of performance measures can be examined, including those from our analysis, which each have their strengths and limitations [23]. Another purpose is"
-  },
-  {
-   "type": "p",
-   "text": "to adapt the final prediction model based on the findings at internal validation. Especially, the use of a ‘shrinkage’ factor (i.e., the calibration slope) will lead to better calibrated predictions from the model [1,2,5,18]. Further, internal validity may be seen as an approximation to external validity (or generalizability) (i.e., the performance in a group of subjects that differs in place and/or time from the subjects used to develop the model) [10]. Typically, internal validation includes a random selection of training and test data within a sample. Sometimes, external validity can be studied within a sample by making a nonrandom split (e.g., according to year of treatment, or center) [31]. External validity is more relevant than internal validity when a previously developed prediction model is applied in another clinical setting. A typical finding at external validation is that the incidence of the outcome is different, while this is not completely accounted for by the predictors in the model [32]. Also, effects of predictors may be different, affecting discriminative ability. These differences may be caused by a variety of factors, including patient selection, referral patterns, the use of newer diagnostic tests and treatments, and definitions of predictors and outcome. As a consequence, external validity will generally be less than internal validity [28]. Our experience with the split-sample approach implies that a reliable assessment of external validity requires a relatively large sample size (e.g., EPV\u000520) in the validation data set. In small validation samples, the variability will be large and the power of tests to detect systematic differences between training and test data will be low. Further research on sample size requirements for external validation studies is warranted, however. Limitations in our study include that we essentially present a case study of mortality in myocardial infarction patients. However, the eight-predictor logistic regression model may be typical for epidemiological studies with some predictors with strong effects and some with weaker effects. Also, the predictive ability of the model is typical (c statistic around 0.80). Finally, our results confirm those of a previous simulation study, where logistic regression models were constructed with 15 or 30 independent predictors in samples of 200 subjects with on average 100 events (EPV 6.7 or 3.3) [33]. Furthermore, we did not evaluate the jack-knife (or leaveone-out) method, where models are constructed on n 1 subjects and n times evaluated on one subject that was left out of the sample. Some technical obstacles exist, such as feasability of evaluating a concordance measure and computer time for large data sets. More important, it is not anticipated that this form of cross-validation gives better results than the bootstrap, since the bootstrap was proposed as an improvement over the jack-knife [7]. Finally, a puzzling observation was that the .632 and .632\b bootstrap variants were not superior to the regular bootstrap. Possibly this is explained by the fact that we studied non-per-subject measures, such as the c statistic, while the methods were developed for per-subject measures, such as misclassification error [38]."
+   "text": "Accurate estimation of the internal validity of a predictive regression model is especially problematic when the sample size is small. The apparent performance as estimated in the sample then is a substantial overestimation of the true performance in similar subjects. In our study, split-sample approaches underestimated performance and showed high variability. In contrast, bootstrap resampling resulted in stable and nearly unbiased estimates of performance. Methods to assess internal validity vary in the amount of data that are used to estimate the model and the amount of data kept out to test the model (Table 1). With the split-half approach, the performance of the full model was underestimated since only half of the data was used to construct the model. Also, the estimate was very unstable, since half of the sample was used for validation. When we used two thirds of the data for model construction, the bias decreased, but the variability increased substantially. In total, this resulted in less accurate estimates of the internal validity, as quantified by the root mean squared error. With regular bootstrapping, we constructed and validated the model in data sets with 100% of the number of subjects. We note that the apparent performance has this same property: 100% of the sample is used for construction and validation. Apparent estimates were stable but biased, while bootstrap estimates were nearly unbiased and only slightly more variable. A reasonable compromise was cross-validation on 10% of the sample, where 90% was used for construction. The bias was generally small since 90% is close to 100%. Also, stability was satisfactory, which is explained by the fact that repetition of the procedure causes 100% of the data to be eventually used for validation. Stability could be further improved by repeating the whole procedure. We note that all internal validation procedures lead to an increase in variability compared with the apparent estimates, because all estimated corrections for the optimism in the apparent estimates are associated with some uncertainty. This uncertainty adds variability to the variability in the apparent estimate, which is inherent to data sets of finite sample size. Note that this uncertainty does decrease but does not disappear by increasing the number of repetitions [7]. Comparing cross-validation and bootstrapping, we note that cross-validation has the advantage that the procedure can intuitively be understood as a simple extension of the split-sample approach. In contrast, bootstrapping may be viewed by some as a statistical trick. A disadvantage was that cross-validation could not accurately estimate all performance measures; this may be explained by nonnormal distributions of performance measures such as calibration slope and R2. Computer time is shorter for cross-validation techniques, but this can currently hardly be considered relevant. Taking 50 to 100 bootstrap repetitions was sufficient in our simulations, but a somewhat higher number (e.g., 200 repetitions) may be advisable in practice. Further, a thor- ough theory has been developed to support the bootstrap as a quite universal validation technique [7]. We found that bootstrapping led to accurate estimates of model performance both for a prespecified model and a stepwise selected model. When the model is specified according to the data under study, such as stepwise selection of covariables, a good fit of the model to the data may be obtained. However, the apparent estimate of model performance will be considerably optimistic [1,6,26]. Moreover, the performance in independent data may be worse than that of a prespecified model [4,11], most markedly when the model was constructed in a small data set [18]. Model specification may include procedures that are automatic, such as stepwise selection, and procedures that are more subjective, such as collapsing categorical predictors based on the observed relationship with the outcome. As illustrated in our study, automatic procedures can readily be included in the evaluation of a predictive model [1,27]. When not all modeling decisions can systematically be replayed, one might ignore these decisions and calculate a bootstrap estimate as an upper limit of expected performance. We focused on accurate estimation of the performance of a predictive model based on the full sample. If the final model were constructed on part of the sample (e.g., half or two thirds), this reduction in sample size logically resulted in a poorer performance. Although this sacrificing of subjects for validation purposes is quite common, it should be considered a waste of data [28]. If a split-sample procedure was followed for validation, it is natural that the final model should nevertheless be based on the full sample [1]. This implies that the procedure that was used to derive the predictive model, including any model specification steps such as recoding and selection of covariables, should finally be performed in the full sample. Assessments of internal validity may serve multiple purposes. First, the quality of the predictive model indicates the potential usefulness in clinical practice. For example, a model with low discriminative power (e.g., a c statistic of around 0.6) [29] will not well be able to define high-risk groups, in contrast to a model with a c statistic of, for example, over 0.95 [30]. A variety of performance measures can be examined, including those from our analysis, which each have their strengths and limitations [23]. Another purpose is to adapt the final prediction model based on the findings at internal validation. Especially, the use of a ‘shrinkage’ factor (i.e., the calibration slope) will lead to better calibrated predictions from the model [1,2,5,18]. Further, internal validity may be seen as an approximation to external validity (or generalizability) (i.e., the performance in a group of subjects that differs in place and/or time from the subjects used to develop the model) [10]. Typically, internal validation includes a random selection of training and test data within a sample. Sometimes, external validity can be studied within a sample by making a nonrandom split (e.g., according to year of treatment, or center) [31]. External validity is more relevant than internal validity when a previously developed prediction model is applied in another clinical setting. A typical finding at external validation is that the incidence of the outcome is different, while this is not completely accounted for by the predictors in the model [32]. Also, effects of predictors may be different, affecting discriminative ability. These differences may be caused by a variety of factors, including patient selection, referral patterns, the use of newer diagnostic tests and treatments, and definitions of predictors and outcome. As a consequence, external validity will generally be less than internal validity [28]. Our experience with the split-sample approach implies that a reliable assessment of external validity requires a relatively large sample size (e.g., EPV\u000520) in the validation data set. In small validation samples, the variability will be large and the power of tests to detect systematic differences between training and test data will be low. Further research on sample size requirements for external validation studies is warranted, however. Limitations in our study include that we essentially present a case study of mortality in myocardial infarction patients. However, the eight-predictor logistic regression model may be typical for epidemiological studies with some predictors with strong effects and some with weaker effects. Also, the predictive ability of the model is typical (c statistic around 0.80). Finally, our results confirm those of a previous simulation study, where logistic regression models were constructed with 15 or 30 independent predictors in samples of 200 subjects with on average 100 events (EPV 6.7 or 3.3) [33]. Furthermore, we did not evaluate the jack-knife (or leaveone-out) method, where models are constructed on n 1 subjects and n times evaluated on one subject that was left out of the sample. Some technical obstacles exist, such as feasability of evaluating a concordance measure and computer time for large data sets. More important, it is not anticipated that this form of cross-validation gives better results than the bootstrap, since the bootstrap was proposed as an improvement over the jack-knife [7]. Finally, a puzzling observation was that the .632 and .632\b bootstrap variants were not superior to the regular bootstrap. Possibly this is explained by the fact that we studied non-per-subject measures, such as the c statistic, while the methods were developed for per-subject measures, such as misclassification error [38]."
   },
   {
    "type": "p",
@@ -648,15 +208,7 @@
   },
   {
    "type": "p",
-   "text": "Acknowledgments"
-  },
-  {
-   "type": "p",
    "text": "We would like to thank Kerry L. Lee, Duke Clinical Research Institute, Duke University Medical Center, Durham NC, and the GUSTO investigators for making the GUSTO-I data available for analysis. The research of Dr Steyerberg has been made possible by a fellowship of the Royal Netherlands Academy of Arts and Sciences."
-  },
-  {
-   "type": "p",
-   "text": "References"
   }
  ]
 }

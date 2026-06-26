@@ -22,11 +22,7 @@
   },
   {
    "type": "p",
-   "text": "C linical decision-making and cost-effectiveness analyses often rely on a subject’s absolute risk of a disease event of interest.1 As an example, the National Cholesterol Education Program Adult Treatment Panel III2 treatment recommendations for the prevention of coronary heart disease (CHD) are based on the predicted 10-year risk of CHD.2–4 If"
-  },
-  {
-   "type": "p",
-   "text": "the 10-year risk exceeds 20%, patients are classiﬁed as high-risk and deserve aggressive treatment.2 Hence, the implementation of preventive analytic strategies requires prognostic models that estimate the actual individual risk as accurately as possible. In frail populations, such as elderly subjects, other causes of failure may occur prior to the occurrence of the disease event of interest. Because such competing risk events preclude the event of interest and thus the beneﬁt of an intervention, prognostic models should take competing risk events into account. We consider competing risk models and show how measures for the evaluation of calibration and discrimination of prognostic survival models can be adapted to the competing risks setting. An example of CHD risk prediction for women aged 55–90 years in the Rotterdam study illustrates how predictive models that properly account for competing risks can be developed and assessed. Prediction of CHD risk in the elderly becomes increasingly important because of the ageing of populations. There are a number of established risk scores,5–8 but they were not speciﬁcally developed for the ageing population and do not account for the occurrence of competing non-CHD death. We compare 3 modeling approaches and show that substantial bias arises if competing risks are disregarded."
+   "text": "C linical decision-making and cost-effectiveness analyses often rely on a subject’s absolute risk of a disease event of interest.1 As an example, the National Cholesterol Education Program Adult Treatment Panel III2 treatment recommendations for the prevention of coronary heart disease (CHD) are based on the predicted 10-year risk of CHD.2–4 If the 10-year risk exceeds 20%, patients are classiﬁed as high-risk and deserve aggressive treatment.2 Hence, the implementation of preventive analytic strategies requires prognostic models that estimate the actual individual risk as accurately as possible. In frail populations, such as elderly subjects, other causes of failure may occur prior to the occurrence of the disease event of interest. Because such competing risk events preclude the event of interest and thus the beneﬁt of an intervention, prognostic models should take competing risk events into account. We consider competing risk models and show how measures for the evaluation of calibration and discrimination of prognostic survival models can be adapted to the competing risks setting. An example of CHD risk prediction for women aged 55–90 years in the Rotterdam study illustrates how predictive models that properly account for competing risks can be developed and assessed. Prediction of CHD risk in the elderly becomes increasingly important because of the ageing of populations. There are a number of established risk scores,5–8 but they were not speciﬁcally developed for the ageing population and do not account for the occurrence of competing non-CHD death. We compare 3 modeling approaches and show that substantial bias arises if competing risks are disregarded."
   },
   {
    "type": "h2",
@@ -39,11 +35,7 @@
   },
   {
    "type": "p",
-   "text": "The observable data in competing risks models are represented by the (possibly censored) time to the event T and the cause of failure D, ie, either the event of interest (D \u0002 1, eg, “CHD”) or the competing event (D \u0002 2, eg, “non-CHD death”). A key quantity is the cumulative incidence function Ik(t) for the event of interest or the competing event, which describes the actual (absolute) risk of failing from cause k until time t: Ik(t) \u0002 P(T\u0001t and D \u0002 k). The cumulative incidence functions for the 2 competing events are both increasing with time t and add up to 1 at time inﬁnity, as ultimately either of the 2 events is bound to occur. A non-"
-  },
-  {
-   "type": "p",
-   "text": "parametric estimator of the cumulative incidence function,9–11 similar to Kaplan-Meier estimates in survival analysis, provides a useful summary of competing risks data."
+   "text": "The observable data in competing risks models are represented by the (possibly censored) time to the event T and the cause of failure D, ie, either the event of interest (D \u0002 1, eg, “CHD”) or the competing event (D \u0002 2, eg, “non-CHD death”). A key quantity is the cumulative incidence function Ik(t) for the event of interest or the competing event, which describes the actual (absolute) risk of failing from cause k until time t: Ik(t) \u0002 P(T\u0001t and D \u0002 k). The cumulative incidence functions for the 2 competing events are both increasing with time t and add up to 1 at time inﬁnity, as ultimately either of the 2 events is bound to occur. A non- parametric estimator of the cumulative incidence function,9–11 similar to Kaplan-Meier estimates in survival analysis, provides a useful summary of competing risks data."
   },
   {
    "type": "p",
@@ -71,19 +63,11 @@
   },
   {
    "type": "p",
-   "text": "Fine and Gray Model Several direct regression models for the cumulative incidence have been proposed.17–19 We focus on the Fine and Gray17 model, which is most widely used and allows for a proportional hazards interpretation. It is a proportional hazards model for the subdistribution hazard of the event of interest,"
+   "text": "Fine and Gray Model Several direct regression models for the cumulative incidence have been proposed.17–19 We focus on the Fine and Gray17 model, which is most widely used and allows for a proportional hazards interpretation. It is a proportional hazards model for the subdistribution hazard of the event of interest, deﬁned as \u0002\u0001 1\u0003t\u0004 :\u0003 \u0004 d log(1 \u0006 I1\u0003t\u0004)"
   },
   {
    "type": "p",
-   "text": "deﬁned as \u0002\u0001 1\u0003t\u0004 :\u0003 \u0004 d log(1 \u0006 I1\u0003t\u0004)"
-  },
-  {
-   "type": "p",
-   "text": "dt . Given covariates Z, the"
-  },
-  {
-   "type": "p",
-   "text": "model is of the form \u0002\u0001 1\u0003t\u0007Z\u0004 \u0003 \u0002\u0001 1,0\u0003t\u0004 exp\u0003\u0006tZ\u0004 where \u0002\u0001 1,0\u0003t\u0004 is the baseline subdistribution hazard for the event of interest. Solving for the cumulative incidence function gives the formula:"
+   "text": "dt . Given covariates Z, the model is of the form \u0002\u0001 1\u0003t\u0007Z\u0004 \u0003 \u0002\u0001 1,0\u0003t\u0004 exp\u0003\u0006tZ\u0004 where \u0002\u0001 1,0\u0003t\u0004 is the baseline subdistribution hazard for the event of interest. Solving for the cumulative incidence function gives the formula:"
   },
   {
    "type": "h2",
@@ -106,11 +90,7 @@
   },
   {
    "type": "p",
-   "text": "Calibration Calibration refers to whether the predicted risks from a prognostic model agree with the observed risks. This is"
-  },
-  {
-   "type": "p",
-   "text": "particularly important for external validation of a prognostic model.22,23 To assess calibration for competing risks models, the analyst may choose one or several time points and then plot the actual observed risk, ie, the cumulative incidence function estimate,9–11 computed within percentiles of predicted risk, against the average predicted risk within the same percentiles for the event of interest. In the case of CHD prediction, one would use the 10-year risk estimates since these are the basis of current guidelines.2"
+   "text": "Calibration Calibration refers to whether the predicted risks from a prognostic model agree with the observed risks. This is particularly important for external validation of a prognostic model.22,23 To assess calibration for competing risks models, the analyst may choose one or several time points and then plot the actual observed risk, ie, the cumulative incidence function estimate,9–11 computed within percentiles of predicted risk, against the average predicted risk within the same percentiles for the event of interest. In the case of CHD prediction, one would use the 10-year risk estimates since these are the basis of current guidelines.2"
   },
   {
    "type": "p",
@@ -118,11 +98,7 @@
   },
   {
    "type": "p",
-   "text": "Discrimination and Reclassification Intuitively, a prediction model for the event of interest discriminates well if it assigns high risks to individuals experiencing the event of interest early, lower risks to individuals experiencing the event of interest later, and negligible risk to those never experiencing the event of interest (ie, individuals with competing events) and to those without any event during follow-up (censored observations). This intuition is quantiﬁed by our adapted deﬁnition of the c index below. A c (for concordance) index is a widely used measure for assessing predictive discrimination for continuous, binary, and survival-type outcomes.22,24 It can be deﬁned as the proportion of all evaluable ordered patient pairs for which predictions and outcomes are concordant. In the context of competing risks, we propose to deﬁne evaluable and concordant patient pairs as follows. An ordered patient pair is deﬁned as evaluable if the ﬁrst patient experiences the event of interest at a time point when the second patient is still at risk; all other ordered pairs are nonevaluable. The risk set here is deﬁned as follows. Both patients who experience the event of interest and patients who are censored are at risk until the event or the censoring time, respectively. Individuals who fail from the competing risk event remain in the risk set and are at risk at any time. The rationale for this unorthodox deﬁnition is that patients experiencing competing events are deﬁnitely known to never experience the event of interest, whereas censored patients are only known not to experience the event of interest until censoring. The same deﬁnition is inherently used in the Fine and Gray17 approach. An evaluable ordered patient pair is deﬁned as concordant if the ﬁrst patient (ie, the patient experiencing the event of interest at the time the second patient is still at risk) has the higher risk prediction than the second. When predicted risks are identical, 0.5 rather than 1 is added to the count of"
-  },
-  {
-   "type": "p",
-   "text": "concordant pairs.22 If the predictive model is a Fine and Gray model containing only baseline covariates, the risk ordering at any time point is the same and given by the linear predictor of the model. However, for risk predictions based on causespeciﬁc hazards models or Fine and Gray models that include covariate-time interactions, the risks have to be compared at a speciﬁc time point, ie, at the time the ﬁrst patient experiences the event of interest.25"
+   "text": "Discrimination and Reclassification Intuitively, a prediction model for the event of interest discriminates well if it assigns high risks to individuals experiencing the event of interest early, lower risks to individuals experiencing the event of interest later, and negligible risk to those never experiencing the event of interest (ie, individuals with competing events) and to those without any event during follow-up (censored observations). This intuition is quantiﬁed by our adapted deﬁnition of the c index below. A c (for concordance) index is a widely used measure for assessing predictive discrimination for continuous, binary, and survival-type outcomes.22,24 It can be deﬁned as the proportion of all evaluable ordered patient pairs for which predictions and outcomes are concordant. In the context of competing risks, we propose to deﬁne evaluable and concordant patient pairs as follows. An ordered patient pair is deﬁned as evaluable if the ﬁrst patient experiences the event of interest at a time point when the second patient is still at risk; all other ordered pairs are nonevaluable. The risk set here is deﬁned as follows. Both patients who experience the event of interest and patients who are censored are at risk until the event or the censoring time, respectively. Individuals who fail from the competing risk event remain in the risk set and are at risk at any time. The rationale for this unorthodox deﬁnition is that patients experiencing competing events are deﬁnitely known to never experience the event of interest, whereas censored patients are only known not to experience the event of interest until censoring. The same deﬁnition is inherently used in the Fine and Gray17 approach. An evaluable ordered patient pair is deﬁned as concordant if the ﬁrst patient (ie, the patient experiencing the event of interest at the time the second patient is still at risk) has the higher risk prediction than the second. When predicted risks are identical, 0.5 rather than 1 is added to the count of concordant pairs.22 If the predictive model is a Fine and Gray model containing only baseline covariates, the risk ordering at any time point is the same and given by the linear predictor of the model. However, for risk predictions based on causespeciﬁc hazards models or Fine and Gray models that include covariate-time interactions, the risks have to be compared at a speciﬁc time point, ie, at the time the ﬁrst patient experiences the event of interest.25"
   },
   {
    "type": "p",
@@ -134,11 +110,7 @@
   },
   {
    "type": "p",
-   "text": "Three different regression models were ﬁtted and compared: a Fine and Gray model, a cause-speciﬁc hazards model, and a standard Cox model. Because model selection was not the aim of this work, we predeﬁned a “traditional” model similar to existing popular Framingham models5 using the following covariates: age, treatment for high blood pressure (yes versus no), systolic blood pressure (separate slopes"
-  },
-  {
-   "type": "p",
-   "text": "depending on whether the patient was on blood pressure treatment or not), diabetes mellitus, log-transformed total cholesterol to HDL cholesterol ratio, and smoking status (current versus never or former smoker) at baseline."
+   "text": "Three different regression models were ﬁtted and compared: a Fine and Gray model, a cause-speciﬁc hazards model, and a standard Cox model. Because model selection was not the aim of this work, we predeﬁned a “traditional” model similar to existing popular Framingham models5 using the following covariates: age, treatment for high blood pressure (yes versus no), systolic blood pressure (separate slopes depending on whether the patient was on blood pressure treatment or not), diabetes mellitus, log-transformed total cholesterol to HDL cholesterol ratio, and smoking status (current versus never or former smoker) at baseline."
   },
   {
    "type": "p",
@@ -160,11 +132,7 @@
   },
   {
    "type": "p",
-   "text": "Calibration, Reclassification, and Discrimination Calibration plots are displayed in the Figure. Calibration of the Fine and Gray model and the cause-speciﬁc"
-  },
-  {
-   "type": "p",
-   "text": "hazards model were good, and the results of the 2 models were similar to each other. The risk overestimation of the standard Cox analysis is apparent. A comparison of the standard Cox model and the Fine and Gray model with a reclassiﬁcation table also illustrates the miscalibration of the standard Cox model (eTable 1, http://links.lww.com/A939): 12% of the low-risk patients and 37% of the intermediate-risk patients, as classiﬁed according to the Fine and Gray model, were incorrectly reclassiﬁed as intermediate risk and high risk, respectively, using the standard Cox model. In contrast, the Fine and Gray model and the"
+   "text": "Calibration, Reclassification, and Discrimination Calibration plots are displayed in the Figure. Calibration of the Fine and Gray model and the cause-speciﬁc hazards model were good, and the results of the 2 models were similar to each other. The risk overestimation of the standard Cox analysis is apparent. A comparison of the standard Cox model and the Fine and Gray model with a reclassiﬁcation table also illustrates the miscalibration of the standard Cox model (eTable 1, http://links.lww.com/A939): 12% of the low-risk patients and 37% of the intermediate-risk patients, as classiﬁed according to the Fine and Gray model, were incorrectly reclassiﬁed as intermediate risk and high risk, respectively, using the standard Cox model. In contrast, the Fine and Gray model and the"
   },
   {
    "type": "p",
@@ -189,27 +157,15 @@
   },
   {
    "type": "p",
-   "text": "Comparison of Different Competing Risks Regression Models Our example illustrates the overestimation of actual CHD risk if the competing risk is ignored, ie, if Cox regres-"
+   "text": "Comparison of Different Competing Risks Regression Models Our example illustrates the overestimation of actual CHD risk if the competing risk is ignored, ie, if Cox regres- sion analysis is applied in a naive way. It is well-known that Kaplan-Meier curves overestimate absolute risk in the presence of competing risks (eg,9,13) but it appears to be less well-known that the same holds for Cox regression. In contrast, both the cause-speciﬁc hazards model and the Fine and Gray model performed similarly well in our example. Other comparisons between Fine and Gray and cause-speciﬁc models have investigated differences in parameter estimates if both are applied to the same data and their interpretation.16,32"
   },
   {
    "type": "p",
-   "text": "sion analysis is applied in a naive way. It is well-known that Kaplan-Meier curves overestimate absolute risk in the presence of competing risks (eg,9,13) but it appears to be less well-known that the same holds for Cox regression. In contrast, both the cause-speciﬁc hazards model and the Fine and Gray model performed similarly well in our example. Other comparisons between Fine and Gray and cause-speciﬁc models have investigated differences in parameter estimates if both are applied to the same data and their interpretation.16,32"
+   "text": "Measures of Accuracy We adapted calibration plots, the c index, Royston and Sauerbrei’s measure D, and reclassiﬁcation methods to the competing risks context. The c index was discussed because it is a simple and widely used measure of discrimination that is unaffected by systematic calibration problems. Our adapted c index accounts for the fact that competing events prevent the occurrence of the event of interest, and in situations with strong competing risks this can have a substantial impact: In our example, a naive calculation of the traditional c index would falsely suggest better predictability of the event of interest (naive c \u0002 0.75 versus adapted c \u0002 0.70 for the standard Cox model). However, controversial issues have been raised that relate to the c index in general and merit further discussion. First, by conditioning on the events being observed, the c index depends on the censoring distribution.33 This is a minor issue in our case study, in which all patients have a similar follow-up duration and loss to follow-up is minimal. However, it could be more problematic in other situations, especially when the censoring distribution depends heavily on covariates. Second, the c index is relatively insensitive to small but potentially clinically-relevant changes in predictive accuracy.34,35 This could be the reason why the c index, but not calibration, is virtually identical for all 3 models in our case study. An alternative that directly compares the clinical impact of different models are reclassiﬁcation methods.27,34,35 Third, for actual clinical decision making, approaches that take application-speciﬁc loss functions into account may be more relevant than the c index. Gail and Pfeiffer31 have written a useful review of decision-theoretic approaches for models of absolute risks. There is no universally accepted and perfect summary measure that covers all aspects of model performance. Therefore, several measures should be calculated in applications. We encourage the adaptation of additional measures for survival data26,36,37 to competing risks."
   },
   {
    "type": "p",
-   "text": "Measures of Accuracy We adapted calibration plots, the c index, Royston and Sauerbrei’s measure D, and reclassiﬁcation methods to the competing risks context. The c index was discussed because it is a simple and widely used measure of discrimination that is unaffected by systematic calibration problems. Our adapted c index accounts for the fact that competing events prevent the occurrence of the event of interest, and in situations with strong competing risks this can have a substantial impact: In our example, a naive calculation of the traditional c index would falsely suggest better predictability of the event of interest (naive c \u0002 0.75 versus adapted c \u0002 0.70 for the standard Cox model). However, controversial issues have been raised that relate to the c index in general and merit further discussion. First, by conditioning on the events being observed, the c index depends on the censoring distribution.33 This is a minor issue in our case study, in which all patients have a similar follow-up duration and loss to follow-up is minimal. However, it could be more problematic in other situations, especially when the censoring distribution depends heavily on covariates. Second, the c index is relatively insensitive to small but potentially clinically-relevant changes in predictive accuracy.34,35 This could be the reason why the c index, but not calibration, is virtually identical for all 3 models in our case study. An alternative that directly compares the clinical impact of different models are reclassiﬁcation methods.27,34,35 Third, for actual clinical decision making, approaches that take application-speciﬁc loss functions into account may be more relevant than the c index. Gail and Pfeiffer31 have written a useful review of decision-theoretic"
-  },
-  {
-   "type": "p",
-   "text": "approaches for models of absolute risks. There is no universally accepted and perfect summary measure that covers all aspects of model performance. Therefore, several measures should be calculated in applications. We encourage the adaptation of additional measures for survival data26,36,37 to competing risks."
-  },
-  {
-   "type": "p",
-   "text": "Clinical Implications for CHD Risk Prediction As the population ages, CHD risk prediction in older subjects is a challenge, and our risk model for older women has clinical implications. First, established risk models5–8"
-  },
-  {
-   "type": "p",
-   "text": "may extrapolate poorly to older women and substantially overestimate actual risks. Second, CHD risk prediction becomes more difﬁcult with the growing incidence of competing events. In our example, overestimation of the standard Cox model was particularly severe in high-risk strata. As age is a strong predictor of CHD risk, these high-risk strata contain a large fraction of relatively old patients. At the same time, the mortality due to reasons other than CHD increases even more dramatically with increasing age, thus explaining this ﬁnding. Studying calibration according to age strata revealed that the standard Cox model calibrates reasonably well up to an age of about 75 years, ie, the age range for which most well-known CHD risk prediction models, which ignored competing risks, were developed.5–8"
+   "text": "Clinical Implications for CHD Risk Prediction As the population ages, CHD risk prediction in older subjects is a challenge, and our risk model for older women has clinical implications. First, established risk models5–8 may extrapolate poorly to older women and substantially overestimate actual risks. Second, CHD risk prediction becomes more difﬁcult with the growing incidence of competing events. In our example, overestimation of the standard Cox model was particularly severe in high-risk strata. As age is a strong predictor of CHD risk, these high-risk strata contain a large fraction of relatively old patients. At the same time, the mortality due to reasons other than CHD increases even more dramatically with increasing age, thus explaining this ﬁnding. Studying calibration according to age strata revealed that the standard Cox model calibrates reasonably well up to an age of about 75 years, ie, the age range for which most well-known CHD risk prediction models, which ignored competing risks, were developed.5–8"
   },
   {
    "type": "p",

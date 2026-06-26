@@ -9,7 +9,8 @@ export type Item =
   | { type: "h3"; num?: string; text: string }
   | { type: "p"; text: string }
   | { type: "figure"; num: number; src: string }
-  | { type: "table"; num: number; src: string };
+  | { type: "table"; num: number; src: string }
+  | { type: "equation"; src: string };
 
 export type Paper = {
   slug: string;

@@ -2,8 +2,26 @@
 
 import { useEffect, useRef, useState } from "react";
 
-export default function Figure({ src, label }: { src: string; label: string }) {
+export default function Figure({
+  src,
+  label,
+  variant = "figure",
+}: {
+  src: string;
+  label: string;
+  variant?: "figure" | "equation";
+}) {
   const [open, setOpen] = useState(false);
+
+  if (variant === "equation") {
+    return (
+      <div className="eq">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={src} alt={label} loading="lazy" onClick={() => setOpen(true)} />
+        {open && <Lightbox src={src} label={label} onClose={() => setOpen(false)} />}
+      </div>
+    );
+  }
 
   return (
     <figure className="fig">

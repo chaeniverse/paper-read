@@ -283,6 +283,18 @@ html, body {
 .fig-frame:hover .zoom-btn { opacity: 1; }
 .zoom-btn:hover { background: var(--accent); }
 
+/* ---------- Equations (rendered as images) ---------- */
+.eq {
+  margin: 1.3em 0;
+  text-align: center;
+}
+.eq img {
+  max-width: 100%;
+  height: auto;
+  cursor: zoom-in;
+  vertical-align: middle;
+}
+
 /* ---------- Lightbox ---------- */
 .lightbox {
   position: fixed;

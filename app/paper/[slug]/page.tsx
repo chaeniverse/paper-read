@@ -93,6 +93,15 @@ function renderItem(it: Item, i: number, paper: Paper) {
           label={`Table ${it.num}`}
         />
       );
+    case "equation":
+      return (
+        <Figure
+          key={i}
+          variant="equation"
+          src={`/figures/${paper.slug}/${it.src}`}
+          label="Equation"
+        />
+      );
     case "p":
       return <p key={i}>{it.text}</p>;
     default:

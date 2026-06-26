@@ -134,8 +134,21 @@ def _topmost_captions(blocks, regex):
 
 def render_figures_tables(pg, W, fig_dir, figmap, tablemap):
     blocks = [b for b in pg.get_text("dict")["blocks"] if "lines" in b]
+
+    # Rotated (landscape) pages are almost always one full-page wide table.
+    # Render the whole page upright (get_pixmap honours /Rotate) instead of
+    # trying to crop in the transposed coordinate space.
+    if pg.rotation:
+        nums = sorted(_topmost_captions(blocks, TAB_RE).keys())
+        if nums:
+            pix = pg.get_pixmap(matrix=fitz.Matrix(SCALE, SCALE))
+            for n in nums:
+                pix.save(os.path.join(fig_dir, f"table{n}.png"))
+                tablemap[n] = f"table{n}.png"
+        return
+
     grx = graphics_rects(pg)
-    W = pg.rect.width            # per-page width (some table pages are landscape)
+    W = pg.rect.width            # per-page width
     H = pg.rect.height
 
     # FIGURE: caption below the graphic
@@ -225,6 +238,73 @@ def place(items, mp, kind, labels):
     return out
 
 
+STRONG_MATH = "=<>≤≥≠∑∫∞√∂−·⋅×±∼"
+
+
+def is_eq(t):
+    """Heuristic: is this text block a display equation?"""
+    t = t.strip()
+    if len(t) > 240:
+        return False
+    strong = sum(t.count(c) for c in STRONG_MATH)
+    if re.search(r"\(\d{1,2}(\.\d{1,2})?\)\s*$", t) and ("=" in t or strong >= 2):
+        return True
+    sym = sum(t.count(c) for c in STRONG_MATH + "()[]{}|∕")
+    lett = sum(c.isalpha() for c in t)
+    return strong >= 2 and sym >= 4 and sym > lett * 0.45 and len(t) < 150
+
+
+def detect_eq_bands(blocks):
+    """Group display-equation blocks (and their split fragments) into y-bands."""
+    seeds = sorted([b for b in blocks if is_eq(block_text(b))],
+                   key=lambda b: b["bbox"][1])
+    bands = []
+    for b in seeds:
+        y0, y1 = b["bbox"][1], b["bbox"][3]
+        if bands and y0 - bands[-1]["y1"] < 22:
+            bands[-1]["y1"] = max(bands[-1]["y1"], y1)
+            bands[-1]["y0"] = min(bands[-1]["y0"], y0)
+        else:
+            bands.append({"y0": y0, "y1": y1})
+    for band in bands:
+        members = [bb for bb in blocks
+                   if bb["bbox"][3] > band["y0"] - 16 and bb["bbox"][1] < band["y1"] + 16
+                   and (is_eq(block_text(bb)) or len(block_text(bb)) < 12)]
+        if not members:
+            continue
+        band["x0"] = min(bb["bbox"][0] for bb in members)
+        band["x1"] = max(bb["bbox"][2] for bb in members)
+        band["y0"] = min(bb["bbox"][1] for bb in members)
+        band["y1"] = max(bb["bbox"][3] for bb in members)
+        band["ids"] = {id(bb) for bb in members}
+    return [b for b in bands if "ids" in b]
+
+
+def clean_fragments(items):
+    """Drop stray equation fragments (lone subscripts, parens, numbers) and
+    re-stitch sentences that those fragments split apart."""
+    has_word = re.compile(r"[A-Za-z]{3,}")
+    kept = []
+    for it in items:
+        if it["type"] == "p":
+            t = it["text"].strip()
+            # a real paragraph has at least two words >=3 letters
+            if len(has_word.findall(t)) < 2 and len(t) < 24:
+                continue
+        kept.append(it)
+
+    merged = []
+    for it in kept:
+        if (it["type"] == "p" and merged and merged[-1]["type"] == "p"):
+            prev = merged[-1]["text"]
+            cur = it["text"]
+            if not re.search(r"[.?!:)\]]['\"’]?\s*$", prev) and re.match(r"^[a-z(\[]", cur):
+                merged[-1]["text"] = prev.rstrip() + " " + cur
+                continue
+        merged.append(dict(it))
+    return merged
+
+
 def looks_abstract(t):
     head = re.sub(r"\s+", "", t)[:12].lower()
     return head.startswith("abstract") or head.startswith("summary")
@@ -292,9 +372,6 @@ def main(pdf_path, slug, title, authors, venue, year, link_only):
     fig_dir = os.path.join(ROOT, "public", "figures", slug)
     os.makedirs(fig_dir, exist_ok=True)
     d = fitz.open(pdf_path)
-    for pg in d:                 # normalise rotation so coords & rendering align
-        if pg.rotation:
-            pg.set_rotation(0)
     W = d[0].rect.width
     boiler = boilerplate_lines(d)
     hist = Counter()
@@ -319,9 +396,32 @@ def main(pdf_path, slug, title, authors, venue, year, link_only):
     seen_abstract = False
     want_abstract = False
     dropcap = None
+    eqcount = 0
     for i, pg in enumerate(d):
+        if pg.rotation:          # rotated table page -> rendered as image, no prose
+            continue
         blocks = [b for b in pg.get_text("dict")["blocks"] if "lines" in b]
+        Wp = pg.rect.width
+
+        # display equations -> render the region as an image, drop the garbled text
+        eq_bands = detect_eq_bands(blocks)
+        for band in eq_bands:
+            eqcount += 1
+            band["n"] = eqcount
+            clip = fitz.Rect(max(28, band["x0"] - 8), band["y0"] - 6,
+                             min(Wp - 26, band["x1"] + 8), band["y1"] + 6)
+            pg.get_pixmap(matrix=fitz.Matrix(SCALE, SCALE), clip=clip).save(
+                os.path.join(fig_dir, f"eq{eqcount}.png"))
+        eq_ids = {bid: band for band in eq_bands for bid in band["ids"]}
+        eq_done = set()
+
         for b in reading_order(blocks, W):
+            if id(b) in eq_ids:                    # part of a display equation
+                band = eq_ids[id(b)]
+                if band["n"] not in eq_done:
+                    items.append({"type": "equation", "src": f"eq{band['n']}.png"})
+                    eq_done.add(band["n"])
+                continue
             sz, t = maxsize(b), block_text(b)
             if not t or is_caption(t) or is_junk(t):
                 continue
@@ -375,6 +475,7 @@ def main(pdf_path, slug, title, authors, venue, year, link_only):
             else:
                 items.append({"type": "p", "text": t})
 
+    items = clean_fragments(items)
     items = place(items, figmap, "figure", ["Figure", "Fig"])
     items = place(items, tablemap, "table", ["Table"])
 
