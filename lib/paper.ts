@@ -13,6 +13,7 @@ export type Item =
 
 export type Paper = {
   slug: string;
+  kind?: "paper" | "pdf"; // "pdf" = reference/manual, link-only (no reading view)
   title: string;
   authors: string;
   venue?: string;
@@ -22,13 +23,19 @@ export type Paper = {
   items: Item[];
 };
 
-// All papers, newest first (by year, then title).
-export const papers: Paper[] = (papersData as Paper[])
-  .slice()
-  .sort((a, b) => (b.year ?? 0) - (a.year ?? 0) || a.title.localeCompare(b.title));
+const all = (papersData as Paper[]).slice();
+const byRecency = (a: Paper, b: Paper) =>
+  (b.year ?? 0) - (a.year ?? 0) || a.title.localeCompare(b.title);
+
+export const isReadable = (p: Paper) => (p.kind ?? "paper") === "paper";
+
+// Full papers (with a reading view) and reference-only PDFs, each newest first.
+export const papers: Paper[] = all.filter(isReadable).sort(byRecency);
+export const references: Paper[] = all.filter((p) => !isReadable(p)).sort(byRecency);
 
 export function getPaper(slug: string): Paper | undefined {
-  return (papersData as Paper[]).find((p) => p.slug === slug);
+  return all.find((p) => p.slug === slug);
 }
 
-export const slugs = (papersData as Paper[]).map((p) => p.slug);
+// Only readable papers get a /paper/[slug] route.
+export const slugs = papers.map((p) => p.slug);

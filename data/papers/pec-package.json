@@ -1,0 +1,10 @@
+{
+ "slug": "pec-package",
+ "kind": "pdf",
+ "title": "pec: Prediction Error Curves for Risk Prediction Models in Survival Analysis",
+ "authors": "",
+ "venue": "CRAN package manual",
+ "year": null,
+ "pdf": "pec-package.pdf",
+ "items": []
+}

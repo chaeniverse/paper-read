@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { papers } from "@/lib/paper";
+import { papers, references, type Paper } from "@/lib/paper";
 import PdfIcon from "@/components/PdfIcon";
 
 export default function Home() {
@@ -11,45 +11,69 @@ export default function Home() {
       </header>
 
       <ul className="post-list">
-        {papers.map((p) => {
-          const figs = p.items.filter((i) => i.type === "figure").length;
-          return (
-            <li key={p.slug} className="post">
-              <Link href={`/paper/${p.slug}`} className="post-link">
-                <div className="post-meta">
-                  {p.venue ? <span>{p.venue}</span> : null}
-                  {p.year ? <span>{p.year}</span> : null}
-                  {figs ? <span>{figs} figures</span> : null}
-                </div>
-                <h2 className="post-title">{p.title}</h2>
-                <p className="post-authors">{p.authors}</p>
-                {p.abstract ? (
-                  <p className="post-excerpt">{excerpt(p.abstract)}</p>
-                ) : null}
-              </Link>
-              <div className="post-actions">
-                <Link href={`/paper/${p.slug}`} className="post-cta">읽기 →</Link>
-                {p.pdf ? (
-                  <a
-                    className="pdf-chip"
-                    href={`/pdfs/${p.pdf}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    title="원본 PDF 열기"
-                  >
-                    <PdfIcon /> PDF
-                  </a>
-                ) : null}
-              </div>
-            </li>
-          );
-        })}
+        {papers.map((p) => (
+          <PaperCard key={p.slug} p={p} />
+        ))}
       </ul>
 
-      {papers.length === 0 && (
+      {references.length > 0 && (
+        <section className="refs">
+          <h2 className="refs-head">참고자료 · 패키지 매뉴얼</h2>
+          <ul className="ref-list">
+            {references.map((p) => (
+              <li key={p.slug} className="ref">
+                <a
+                  className="ref-link"
+                  href={`/pdfs/${p.pdf}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <PdfIcon size={16} />
+                  <span className="ref-title">{p.title}</span>
+                  {p.venue ? <span className="ref-venue">{p.venue}</span> : null}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      {papers.length === 0 && references.length === 0 && (
         <p className="empty">아직 논문이 없습니다. <code>scripts/extract.py</code>로 추가하세요.</p>
       )}
     </main>
+  );
+}
+
+function PaperCard({ p }: { p: Paper }) {
+  const figs = p.items.filter((i) => i.type === "figure").length;
+  return (
+    <li className="post">
+      <Link href={`/paper/${p.slug}`} className="post-link">
+        <div className="post-meta">
+          {p.venue ? <span>{p.venue}</span> : null}
+          {p.year ? <span>{p.year}</span> : null}
+          {figs ? <span>{figs} figures</span> : null}
+        </div>
+        <h2 className="post-title">{p.title}</h2>
+        <p className="post-authors">{p.authors}</p>
+        {p.abstract ? <p className="post-excerpt">{excerpt(p.abstract)}</p> : null}
+      </Link>
+      <div className="post-actions">
+        <Link href={`/paper/${p.slug}`} className="post-cta">읽기 →</Link>
+        {p.pdf ? (
+          <a
+            className="pdf-chip"
+            href={`/pdfs/${p.pdf}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            title="원본 PDF 열기"
+          >
+            <PdfIcon /> PDF
+          </a>
+        ) : null}
+      </div>
+    </li>
   );
 }
 

@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { notFound } from "next/navigation";
-import { getPaper, slugs, type Item, type Paper } from "@/lib/paper";
+import { notFound, redirect } from "next/navigation";
+import { getPaper, slugs, isReadable, type Item, type Paper } from "@/lib/paper";
 import Figure from "@/components/Figure";
 import NotesWidget from "@/components/NotesWidget";
 import PdfIcon from "@/components/PdfIcon";
@@ -17,6 +17,8 @@ export function generateMetadata({ params }: { params: { slug: string } }) {
 export default function PaperPage({ params }: { params: { slug: string } }) {
   const paper = getPaper(params.slug);
   if (!paper) notFound();
+  // Reference-only PDFs have no reading view — send straight to the file.
+  if (!isReadable(paper) && paper.pdf) redirect(`/pdfs/${paper.pdf}`);
 
   return (
     <main className="paper">
