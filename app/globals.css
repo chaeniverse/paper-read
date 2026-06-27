@@ -295,6 +295,48 @@ html, body {
   vertical-align: middle;
 }
 
+/* ---------- Equations (rendered as LaTeX via KaTeX) ---------- */
+.math-block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+  margin: 1.3em 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+.math-block .math-num {
+  flex: 0 0 auto;
+  color: var(--muted, #888);
+  font-variant-numeric: tabular-nums;
+}
+/* inline math should not stretch line-height */
+.math-render .katex { font-size: 1.05em; }
+.math-block .math-render .katex-display { margin: 0; }
+
+/* ---------- OCR'd tables (selectable HTML) ---------- */
+.table-html {
+  margin: 1.4em 0;
+  overflow-x: auto;
+}
+.table-html table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.9em;
+  line-height: 1.4;
+}
+.table-html th,
+.table-html td {
+  border: 1px solid var(--border, #e2e2e2);
+  padding: 0.4em 0.7em;
+  text-align: left;
+  vertical-align: top;
+}
+.table-html thead th {
+  background: var(--surface, #f6f6f6);
+  font-weight: 600;
+}
+
 /* ---------- Lightbox ---------- */
 .lightbox {
   position: fixed;

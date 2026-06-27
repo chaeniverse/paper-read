@@ -6,3 +6,14 @@ node_modules
 .vercel
 *.tsbuildinfo
 next-env.d.ts
+
+# Local-only: OCR intermediates + Python envs (not needed by the Vercel app)
+marker_out/
+nougat_out/
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# sources/ is just a conversion drop-zone; the served copies live in public/pdfs
+sources/*.pdf

@@ -10,7 +10,9 @@ export type Item =
   | { type: "p"; text: string }
   | { type: "figure"; num: number; src: string }
   | { type: "table"; num: number; src: string }
-  | { type: "equation"; src: string };
+  | { type: "table-html"; html: string } // OCR'd table as HTML (selectable)
+  | { type: "equation"; src: string } // legacy: display equation rendered as a PNG
+  | { type: "math"; tex: string; num?: string }; // display equation as LaTeX (KaTeX)
 
 export type Paper = {
   slug: string;

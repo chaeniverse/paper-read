@@ -4,6 +4,7 @@ import { getPaper, slugs, isReadable, type Item, type Paper } from "@/lib/paper"
 import Figure from "@/components/Figure";
 import NotesWidget from "@/components/NotesWidget";
 import PdfIcon from "@/components/PdfIcon";
+import { MathText, MathBlock, TableHtml } from "@/components/Math";
 
 export function generateStaticParams() {
   return slugs.map((slug) => ({ slug }));
@@ -54,7 +55,7 @@ function renderItem(it: Item, i: number, paper: Paper) {
       return (
         <section key={i} className="abstract">
           <h2 className="abstract-label">Abstract</h2>
-          <p>{it.text}</p>
+          <p><MathText text={it.text} /></p>
         </section>
       );
     case "keywords":
@@ -102,8 +103,12 @@ function renderItem(it: Item, i: number, paper: Paper) {
           label="Equation"
         />
       );
+    case "table-html":
+      return <TableHtml key={i} html={it.html} />;
+    case "math":
+      return <MathBlock key={i} tex={it.tex} num={it.num} />;
     case "p":
-      return <p key={i}>{it.text}</p>;
+      return <p key={i}><MathText text={it.text} /></p>;
     default:
       return null;
   }
