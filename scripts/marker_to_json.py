@@ -28,6 +28,17 @@ IMG_EXT = (".jpeg", ".jpg", ".png", ".webp")
 # ---------- inline markup cleanup (math-safe) ----------
 MATH_SPAN = re.compile(r"\$\$[\s\S]*?\$\$|\$[^$\n]*?\$")
 
+# Marker often emits sub/superscripts as <sup>/<sub> styled text (not LaTeX).
+# Convert the common (digit-ish) cases to real Unicode scripts so they read as
+# t₀ / x² / ¹¹ instead of t0 / x2 / 11. Unmapped chars are left as-is.
+SUP = str.maketrans("0123456789+-=()ni", "⁰¹²³⁴⁵⁶⁷⁸⁹⁺⁻⁼⁽⁾ⁿⁱ")
+SUB = str.maketrans("0123456789+-=()aeoxhklmnpstij", "₀₁₂₃₄₅₆₇₈₉₊₋₌₍₎ₐₑₒₓₕₖₗₘₙₚₛₜᵢⱼ")
+
+
+def clean_tex(tex):
+    """Trim stray trailing backslashes / line-breaks that make KaTeX error."""
+    return re.sub(r"\\+\s*$", "", tex.strip()).strip()
+
 
 def strip_md(text):
     """Remove markdown/HTML emphasis everywhere EXCEPT inside $...$ math."""
@@ -42,7 +53,10 @@ def strip_md(text):
 
 def _emph(s):
     s = re.sub(r"<span[^>]*>|</span>", "", s)               # marker anchors
-    s = re.sub(r"</?su[bp]>", "", s)                         # <sup>/<sub> -> keep text
+    s = re.sub(r"\[([^\]]+)\]\([^)]*\)", r"\1", s)          # [text](url) -> text
+    s = re.sub(r"<sup>(.*?)</sup>", lambda m: m.group(1).translate(SUP), s)
+    s = re.sub(r"<sub>(.*?)</sub>", lambda m: m.group(1).translate(SUB), s)
+    s = re.sub(r"</?su[bp]>", "", s)                         # any stray tag
     s = s.replace("<br>", " ").replace("<br/>", " ")
     s = re.sub(r"\*\*([^*]+)\*\*", r"\1", s)                 # **bold**
     s = re.sub(r"(?<!\w)\*([^*\n]+)\*(?!\w)", r"\1", s)      # *italic*
@@ -107,7 +121,7 @@ def parse_md(text, img_names):
         if h:
             items.append(h)
         elif re.fullmatch(r"\$\$[\s\S]+\$\$", para):
-            items.append({"type": "math", "tex": para.strip("$").strip()})
+            items.append({"type": "math", "tex": clean_tex(para.strip("$"))})
         else:
             items.append({"type": "p", "text": para})
 
@@ -139,7 +153,7 @@ def parse_md(text, img_names):
             chunk = s
             while chunk.count("$$") < 2 and i + 1 < n:
                 i += 1; chunk += "\n" + lines[i].strip()
-            inner = re.sub(r"^\$\$|\$\$$", "", chunk.strip()).strip()
+            inner = clean_tex(re.sub(r"^\$\$|\$\$$", "", chunk.strip()))
             if inner:
                 items.append({"type": "math", "tex": inner})
             i += 1; continue
@@ -148,8 +162,10 @@ def parse_md(text, img_names):
         if m:                                               # standalone image
             flush()
             src = os.path.basename(m.group("src"))
-            kind = "table" if re.search(r"table", m.group("alt"), re.I) else "figure"
-            if src in img_names:
+            # Marker tags real charts as "_Figure_"; "_Picture_" is logos /
+            # page numbers / watermarks / author photos -> skip.
+            if "_Picture_" not in src and src in img_names:
+                kind = "table" if re.search(r"table", m.group("alt"), re.I) else "figure"
                 items.append({"type": kind, "num": _num(m.group("alt")), "src": src})
             i += 1; continue
 
@@ -211,10 +227,18 @@ def restructure(items):
                       r"doi:?\s|issn|copyright|©|c the author|\(epidemiology|"
                       r"supplemental digital|published by|downloaded from|"
                       r"wileyonlinelibrary|reprints:|e-?mail:|https?://)")
-    HEADER = re.compile(r"(?i)(volume\s+\d+,?\s+number\s+\d+|^\w[\w .]{0,30}[•·]\s*volume)")
-    body = [it for it in body if not (it["type"] == "p"
-            and (JUNK.match(it["text"]) or
-                 (len(it["text"]) < 80 and HEADER.search(it["text"]))))]
+    # license / boilerplate that appears mid-paragraph (match anywhere)
+    BOILER = re.compile(r"(?i)(creative commons|open access article under the terms|"
+                        r"this article is protected by copyright|john wiley\s*&\s*sons|"
+                        r"published by .{0,25}wiley)")
+    # journal running headers / page footers (short lines)
+    HEADER = re.compile(r"(?i)(volume\s+\d+,?\s+number\s+\d+|[•·]\s*volume|"
+                        r"\bwww\.[\w.-]+\.(com|org)|^\d{1,4}\s*\|)")
+
+    def junk(t):
+        return (JUNK.match(t) or BOILER.search(t)
+                or (len(t) < 90 and HEADER.search(t)))
+    body = [it for it in body if not (it["type"] == "p" and junk(it["text"]))]
 
     result = []
     if abstract:
@@ -234,7 +258,7 @@ def copy_images(src_dir, slug):
         os.remove(os.path.join(dst, f))
     names = set()
     for f in os.listdir(src_dir):
-        if f.lower().endswith(IMG_EXT):
+        if f.lower().endswith(IMG_EXT) and "_Picture_" not in f:  # skip logos/watermarks
             shutil.copyfile(os.path.join(src_dir, f), os.path.join(dst, f))
             names.add(f)
     return names

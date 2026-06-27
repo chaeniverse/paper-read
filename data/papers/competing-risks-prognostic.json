@@ -14,11 +14,11 @@
   },
   {
    "type": "p",
-   "text": "linical decision-making and cost-effectiveness analyses often rely on a subject's absolute risk of a disease event of interest. 1 As an example, the National Cholesterol Education Program Adult Treatment Panel III2 treatment recommendations for the prevention of coronary heart disease (CHD) are based on the predicted 10-year risk of CHD.2-4 If"
+   "text": "linical decision-making and cost-effectiveness analyses often rely on a subject's absolute risk of a disease event of interest. 1 As an example, the National Cholesterol Education Program Adult Treatment Panel III2 treatment recommendations for the prevention of coronary heart disease (CHD) are based on the predicted 10-year risk of CHD.²⁻⁴ If"
   },
   {
    "type": "p",
-   "text": "the 10-year risk exceeds 20%, patients are classified as high-risk and deserve aggressive treatment.2 Hence, the implementation of preventive analytic strategies requires prognostic models that estimate the actual individual risk as accurately as possible."
+   "text": "the 10-year risk exceeds 20%, patients are classified as high-risk and deserve aggressive treatment.² Hence, the implementation of preventive analytic strategies requires prognostic models that estimate the actual individual risk as accurately as possible."
   },
   {
    "type": "p",
@@ -26,7 +26,7 @@
   },
   {
    "type": "p",
-   "text": "We consider competing risk models and show how measures for the evaluation of calibration and discrimination of prognostic survival models can be adapted to the competing risks setting. An example of CHD risk prediction for women aged 55-90 years in the Rotterdam study illustrates how predictive models that properly account for competing risks can be developed and assessed. Prediction of CHD risk in the elderly becomes increasingly important because of the ageing of populations. There are a number of established risk scores,5-8 but they were not specifically developed for the ageing population and do not account for the occurrence of competing non-CHD death. We compare 3 modeling approaches and show that substantial bias arises if competing risks are disregarded."
+   "text": "We consider competing risk models and show how measures for the evaluation of calibration and discrimination of prognostic survival models can be adapted to the competing risks setting. An example of CHD risk prediction for women aged 55-90 years in the Rotterdam study illustrates how predictive models that properly account for competing risks can be developed and assessed. Prediction of CHD risk in the elderly becomes increasingly important because of the ageing of populations. There are a number of established risk scores,⁵⁻⁸ but they were not specifically developed for the ageing population and do not account for the occurrence of competing non-CHD death. We compare 3 modeling approaches and show that substantial bias arises if competing risks are disregarded."
   },
   {
    "type": "h2",
@@ -64,7 +64,7 @@
   },
   {
    "type": "p",
-   "text": "In many applications, competing risks have been ignored (ie, patients experiencing competing events were censored at the time of these events) and standard Cox regression was applied.5–8 Predicted risks for the event of interest were then derived by combining hazard ratio estimates with the estimated baseline hazard function.10 This approach is adequate when competing risks are rare. However, in the presence of strong competing risks, as with frail or elderly populations,12 standard survival predictions may substantially overestimate the absolute risk of the event of interest because subjects with a competing (and thus censored) event are treated as if they could experience the event of interest in the future.9,13,14"
+   "text": "In many applications, competing risks have been ignored (ie, patients experiencing competing events were censored at the time of these events) and standard Cox regression was applied.⁵–⁸ Predicted risks for the event of interest were then derived by combining hazard ratio estimates with the estimated baseline hazard function.¹⁰ This approach is adequate when competing risks are rare. However, in the presence of strong competing risks, as with frail or elderly populations,¹² standard survival predictions may substantially overestimate the absolute risk of the event of interest because subjects with a competing (and thus censored) event are treated as if they could experience the event of interest in the future.⁹,¹³,¹⁴"
   },
   {
    "type": "p",
@@ -98,7 +98,7 @@
   },
   {
    "type": "p",
-   "text": "Several direct regression models for the cumulative incidence have been proposed.17–19 We focus on the Fine and Gray17 model, which is most widely used and allows for a proportional hazards interpretation. It is a proportional hazards model for the subdistribution hazard of the event of interest,"
+   "text": "Several direct regression models for the cumulative incidence have been proposed.¹⁷–¹⁹ We focus on the Fine and Gray¹⁷ model, which is most widely used and allows for a proportional hazards interpretation. It is a proportional hazards model for the subdistribution hazard of the event of interest,"
   },
   {
    "type": "p",
@@ -133,10 +133,6 @@
   {
    "type": "p",
    "text": "Calibration refers to whether the predicted risks from a prognostic model agree with the observed risks. This is"
-  },
-  {
-   "type": "p",
-   "text": "556 | www.epidem.com"
   },
   {
    "type": "p",
@@ -282,11 +278,11 @@
   },
   {
    "type": "p",
-   "text": "In this comparison of competing risks regression models, we find advantages of the Fine and Gray17 model, which provides direct estimates of absolute risks for developing predictive models. We show how established measures for assessing calibration and discrimination, such as the c index can be adapted to the context of competing risks. The proposed methods have been applied to the problem of risk prediction of CHD in older women based on data from the Rotterdam study."
+   "text": "In this comparison of competing risks regression models, we find advantages of the Fine and Gray¹⁷ model, which provides direct estimates of absolute risks for developing predictive models. We show how established measures for assessing calibration and discrimination, such as the c index can be adapted to the context of competing risks. The proposed methods have been applied to the problem of risk prediction of CHD in older women based on data from the Rotterdam study."
   },
   {
    "type": "p",
-   "text": "Importance of Absolute RisksIn line with others, 13,14,31 we regard the absolute risk of the event of interest as crucial for medical decision-making in the competing risks setting. For example, in a subpopulation with a 10-year absolute CHD risk of 20%, 1 in 5 individuals may profit within 10 years from aggressive treatment that lowers the patients' risk of CHD but does not affect the competing risk."
+   "text": "Importance of Absolute RisksIn line with others, ¹³,¹⁴,³¹ we regard the absolute risk of the event of interest as crucial for medical decision-making in the competing risks setting. For example, in a subpopulation with a 10-year absolute CHD risk of 20%, 1 in 5 individuals may profit within 10 years from aggressive treatment that lowers the patients' risk of CHD but does not affect the competing risk."
   },
   {
    "type": "p",
@@ -316,7 +312,7 @@
   },
   {
    "type": "p",
-   "text": "First, by conditioning on the events being observed, the c index depends on the censoring distribution.33 This is a minor issue in our case study, in which all patients have a similar follow-up duration and loss to follow-up is minimal. However, it could be more problematic in other situations, especially when the censoring distribution depends heavily on covariates. Second, the c index is relatively insensitive to small but potentially clinically-relevant changes in predictive accuracy. 34,35 This could be the reason why the c index, but not calibration, is virtually identical for all 3 models in our case study. An alternative that directly compares the clinical impact of different models are reclassification methods. 27,34,35 Third, for actual clinical decision making, approaches that take application-specific loss functions into account may be more relevant than the c index. Gail and Pfeiffer31 have written a useful review of decision-theoretic"
+   "text": "First, by conditioning on the events being observed, the c index depends on the censoring distribution.³³ This is a minor issue in our case study, in which all patients have a similar follow-up duration and loss to follow-up is minimal. However, it could be more problematic in other situations, especially when the censoring distribution depends heavily on covariates. Second, the c index is relatively insensitive to small but potentially clinically-relevant changes in predictive accuracy. 34,35 This could be the reason why the c index, but not calibration, is virtually identical for all 3 models in our case study. An alternative that directly compares the clinical impact of different models are reclassification methods. 27,34,35 Third, for actual clinical decision making, approaches that take application-specific loss functions into account may be more relevant than the c index. Gail and Pfeiffer³¹ have written a useful review of decision-theoretic"
   },
   {
    "type": "p",

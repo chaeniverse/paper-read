@@ -170,7 +170,7 @@
   },
   {
    "type": "math",
-   "tex": "Q^{ij}(t) = I\\{M(t, X_i) > M(t, X_j)\\},\\"
+   "tex": "Q^{ij}(t) = I\\{M(t, X_i) > M(t, X_j)\\},"
   },
   {
    "type": "p",
@@ -444,7 +444,7 @@
   },
   {
    "type": "p",
-   "text": "Truncation point for concordance is t = 10 years. AUC measures are also reported at t = 10 years. Cumulative cases were defined for both AUC measures as subjects with T t and D = \"event type studied\" (CHD or non-CHD death, respectively), controls as subjects with T > t for AUC(t)·,C1 and as subjects with T > t or D = \"other event type\" for AUC(t)·,C2."
+   "text": "Truncation point for concordance is t = 10 years. AUC measures are also reported at t = 10 years. Cumulative cases were defined for both AUC measures as subjects with T t and D = \"event type studied\" (CHD or non-CHD death, respectively), controls as subjects with T > t for AUC(t)·,C¹ and as subjects with T > t or D = \"other event type\" for AUC(t)·,C2."
   },
   {
    "type": "p",
@@ -452,7 +452,7 @@
   },
   {
    "type": "p",
-   "text": "Table [3](#page-10-0) also displays time-dependent AUC measures at t = 10 years in the validation data using two different definitions of controls (Blanche [and others](#page-12-10), [2013](#page-12-10)). AUCs with controls defined as subjects with T > t or D = \"other event type\" (consistently with our concordance definition) were slightly higher but comparable with the concordance whereas AUCs using only subjects with T > t as controls were substantially higher. This could be explained by the fact that age is a strong predictor of both CHD and non-CHD death which hampers discrimination of CHD events from non-CHD deaths."
+   "text": "Table 3 also displays time-dependent AUC measures at t = 10 years in the validation data using two different definitions of controls (Blanche and others, 2013). AUCs with controls defined as subjects with T > t or D = \"other event type\" (consistently with our concordance definition) were slightly higher but comparable with the concordance whereas AUCs using only subjects with T > t as controls were substantially higher. This could be explained by the fact that age is a strong predictor of both CHD and non-CHD death which hampers discrimination of CHD events from non-CHD deaths."
   },
   {
    "type": "h2",
@@ -469,15 +469,15 @@
   },
   {
    "type": "p",
-   "text": "As discussed in [Appendix C of supplementary material available at](http://biostatistics.oxfordjournals.org/lookup/suppl/doi:10.1093/biostatistics/kxt059) Biostatistics online, our approach is related to time-dependent sensitivity, specificity, and ROC curves for competing risks [\\(Saha and Heagerty,](#page-13-2) [2010\\)](#page-13-2) and the concordance can be written as a weighted average of the timedependent AUC(s) for incident cases (T = s, D = 1) and controls defined as observations with T > s or D = 2. Thus, the concordance serves as an overall summary of discrimination whereas the time-dependent AUC measures discrimination of the event status at one specific time point."
+   "text": "As discussed in Appendix C of supplementary material available at Biostatistics online, our approach is related to time-dependent sensitivity, specificity, and ROC curves for competing risks \\(Saha and Heagerty, 2010\\) and the concordance can be written as a weighted average of the timedependent AUC(s) for incident cases (T = s, D = 1) and controls defined as observations with T > s or D = 2. Thus, the concordance serves as an overall summary of discrimination whereas the time-dependent AUC measures discrimination of the event status at one specific time point."
   },
   {
    "type": "p",
-   "text": "We assumed that the prognostic model was derived on an independent training data set and only in this setting are asymptotic or bootstrap confidence intervals for the truncated concordance readily available. Clearly, independent training data are not always available, and even if they are, a joint analysis of all data will be more efficient. However, some form of internal cross-validation is needed to develop and assess a prognostic model with a single data set [\\(Efron and Tibshirani](#page-12-17), [1997;](#page-12-17) Gerds [and others](#page-12-18), [2008;](#page-12-18) Hastie [and others](#page-12-19), [2009](#page-12-19))."
+   "text": "We assumed that the prognostic model was derived on an independent training data set and only in this setting are asymptotic or bootstrap confidence intervals for the truncated concordance readily available. Clearly, independent training data are not always available, and even if they are, a joint analysis of all data will be more efficient. However, some form of internal cross-validation is needed to develop and assess a prognostic model with a single data set \\(Efron and Tibshirani, 1997; Gerds and others, 2008; Hastie and others, 2009)."
   },
   {
    "type": "p",
-   "text": "It is important to emphasize that our definition of concordance assesses a prognostic model for the absolute risk of the event of interest in the presence of competing risks. In line with earlier work [\\(Gail and Pfeiffer](#page-12-4), [2005](#page-12-4); Wolbers [and others](#page-13-0), [2009](#page-13-0)), we regard this risk as crucial for medical decisionmaking in the competing risks setting. However, in many instances explicit consideration of competing events will also be important and modeling the entire competing risks multi-state process will provide further insights [\\(Beyersmann](#page-12-9) and others, [2007](#page-12-9)). As an example, our illustration of concordance for a single marker (presented in [supplementary material available at](http://biostatistics.oxfordjournals.org/lookup/suppl/doi:10.1093/biostatistics/kxt059) Biostatistics online) shows that discrimination of prognostic models for the event of interest is hampered if covariates affect both cause-specific hazards with regression coefficients of the same sign, especially if there is a strong association with the competing risk or if the baseline competing hazard is high. This indicates that to achieve high discrimination ability one needs predictors which are only weakly or, even better, reversely associated with the cause-specific hazard of the competing event. Moreover, in settings where all competing events are of similar importance, joint accuracy criteria for the entire competing risks multi-state process are needed and their development is an important area for future research."
+   "text": "It is important to emphasize that our definition of concordance assesses a prognostic model for the absolute risk of the event of interest in the presence of competing risks. In line with earlier work \\(Gail and Pfeiffer, 2005; Wolbers and others, 2009), we regard this risk as crucial for medical decisionmaking in the competing risks setting. However, in many instances explicit consideration of competing events will also be important and modeling the entire competing risks multi-state process will provide further insights \\(Beyersmann and others, 2007). As an example, our illustration of concordance for a single marker (presented in supplementary material available at Biostatistics online) shows that discrimination of prognostic models for the event of interest is hampered if covariates affect both cause-specific hazards with regression coefficients of the same sign, especially if there is a strong association with the competing risk or if the baseline competing hazard is high. This indicates that to achieve high discrimination ability one needs predictors which are only weakly or, even better, reversely associated with the cause-specific hazard of the competing event. Moreover, in settings where all competing events are of similar importance, joint accuracy criteria for the entire competing risks multi-state process are needed and their development is an important area for future research."
   },
   {
    "type": "h2",
@@ -486,7 +486,7 @@
   },
   {
    "type": "p",
-   "text": "Supplementary material is available at [http://biostatistics.oxfordjournals.org.](http://biostatistics.oxfordjournals.org)"
+   "text": "Supplementary material is available at http://biostatistics.oxfordjournals.org."
   },
   {
    "type": "h2",

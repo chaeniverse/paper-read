@@ -144,7 +144,7 @@
   },
   {
    "type": "p",
-   "text": "&lt;sup>bThe weight w was calculated as: $w = .632 / (1 - .368 \\times R)$ , with R = (test performance - apparent performance) (\"no information\" performance – apparent performance)[8](see text)."
+   "text": "&lt;sup>bThe weight w was calculated as: $w = .632 / (1 - .368 \\times R)$ , with R = (test performance - apparent performance) (\"no information\" performance – apparent performance)8."
   },
   {
    "type": "p",
@@ -197,7 +197,7 @@
   },
   {
    "type": "p",
-   "text": "split 1/3 method had lower bias but larger variability. Compared with the split-half method, cross-validation on 50% of the sample resulted in a similar bias but slightly reduced variability. The 10% cross-validation procedure resulted in very low bias for most measures, except for calibration slope and R2 , where a substantial overestimation occurred. The regular bootstrap resulted in the most accurate estimates of model performance: the bias was close to zero and the variability similar to that of the apparent performance."
+   "text": "split 1/3 method had lower bias but larger variability. Compared with the split-half method, cross-validation on 50% of the sample resulted in a similar bias but slightly reduced variability. The 10% cross-validation procedure resulted in very low bias for most measures, except for calibration slope and R² , where a substantial overestimation occurred. The regular bootstrap resulted in the most accurate estimates of model performance: the bias was close to zero and the variability similar to that of the apparent performance."
   },
   {
    "type": "p",
@@ -214,7 +214,7 @@
   },
   {
    "type": "p",
-   "text": "score, and a lower RMSE for D (scaled chi-square) and R2 . The .632 was by definition more pessimistic in estimating performance than the .632 method. It did not lead to a lower RMSE in our evaluations."
+   "text": "score, and a lower RMSE for D (scaled chi-square) and R² . The .632 was by definition more pessimistic in estimating performance than the .632 method. It did not lead to a lower RMSE in our evaluations."
   },
   {
    "type": "h3",
@@ -236,7 +236,7 @@
   },
   {
    "type": "p",
-   "text": "Stepwise selection led to an average performance that was slightly worse than that of the full eight-predictor model for EPV - 10. When stepwise and prespecified models were evaluated in the test data, the average c statistics were 0.77 and 0.78, calibration slopes 0.89 and 0.91, Brier scores 0.059 and 0.058, D 0.069 and 0.075, and R2 0.17 and 0.18, respectively. The bias in the apparent performance was slightly larger than that observed for prespecified models. The performance was estimated in an nearly unbiased and precise way by any of the bootstrap variants, while other procedures resulted in less accurate estimates."
+   "text": "Stepwise selection led to an average performance that was slightly worse than that of the full eight-predictor model for EPV - 10. When stepwise and prespecified models were evaluated in the test data, the average c statistics were 0.77 and 0.78, calibration slopes 0.89 and 0.91, Brier scores 0.059 and 0.058, D 0.069 and 0.075, and R² 0.17 and 0.18, respectively. The bias in the apparent performance was slightly larger than that observed for prespecified models. The performance was estimated in an nearly unbiased and precise way by any of the bootstrap variants, while other procedures resulted in less accurate estimates."
   },
   {
    "type": "h2",
@@ -269,7 +269,7 @@
   },
   {
    "type": "p",
-   "text": "Comparing cross-validation and bootstrapping, we note that cross-validation has the advantage that the procedure can intuitively be understood as a simple extension of the split-sample approach. In contrast, bootstrapping may be viewed by some as a statistical trick. A disadvantage was that cross-validation could not accurately estimate all performance measures; this may be explained by nonnormal distributions of performance measures such as calibration slope and R2 . Computer time is shorter for cross-validation techniques, but this can currently hardly be considered relevant. Taking 50 to 100 bootstrap repetitions was sufficient in our simulations, but a somewhat higher number (e.g., 200 repetitions) may be advisable in practice. Further, a thorough theory has been developed to support the bootstrap as a quite universal validation technique [7]."
+   "text": "Comparing cross-validation and bootstrapping, we note that cross-validation has the advantage that the procedure can intuitively be understood as a simple extension of the split-sample approach. In contrast, bootstrapping may be viewed by some as a statistical trick. A disadvantage was that cross-validation could not accurately estimate all performance measures; this may be explained by nonnormal distributions of performance measures such as calibration slope and R² . Computer time is shorter for cross-validation techniques, but this can currently hardly be considered relevant. Taking 50 to 100 bootstrap repetitions was sufficient in our simulations, but a somewhat higher number (e.g., 200 repetitions) may be advisable in practice. Further, a thorough theory has been developed to support the bootstrap as a quite universal validation technique [7]."
   },
   {
    "type": "p",
