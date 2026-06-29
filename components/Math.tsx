@@ -2,73 +2,59 @@
 
 import { useEffect, useMemo, useRef } from "react";
 import katex from "katex";
-import renderMathInElement from "katex/contrib/auto-render";
 
-function render(tex: string, displayMode: boolean): string {
-  try {
-    return katex.renderToString(tex, {
-      displayMode,
-      throwOnError: false,
-      strict: false,
-      trust: true,
-      output: "html",
-    });
-  } catch {
-    // Fall back to the raw TeX so nothing disappears on a parse error.
-    return displayMode ? `\\[${tex}\\]` : `\\(${tex}\\)`;
-  }
+// Mathpix/Marker occasionally wrap code or prose in $...$. Feeding that to KaTeX
+// is wrong (and pathological inputs can stall it), so detect non-math and show
+// it as plain text instead.
+const NOT_MATH =
+  /#{3,}|<-|[A-Za-z]\w*\s*=\s*(NA|TRUE|FALSE|NULL|"|F\b|T\b)|\b(axes|xlab|ylab|lwd|axis|par|plot|points|lines|main)\s*[=(]/;
+
+function isMath(tex: string): boolean {
+  return tex.length <= 400 && !NOT_MATH.test(tex);
 }
 
-// A display equation rendered on its own line, optionally numbered.
+// Render KaTeX into an element on the CLIENT only (after mount). Keeping katex out
+// of server-side prerendering makes the build fast and immune to slow inputs.
+function useKatex(tex: string, displayMode: boolean) {
+  const ref = useRef<HTMLSpanElement>(null);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    if (!isMath(tex)) {
+      el.textContent = tex;
+      return;
+    }
+    try {
+      katex.render(tex, el, {
+        displayMode,
+        throwOnError: false,
+        strict: false,
+        trust: true,
+        maxExpand: 1000,
+      });
+    } catch {
+      el.textContent = tex;
+    }
+  }, [tex, displayMode]);
+  return ref;
+}
+
+// A display equation, optionally numbered.
 export function MathBlock({ tex, num }: { tex: string; num?: string }) {
-  const html = useMemo(() => render(tex, true), [tex]);
+  const ref = useKatex(tex, true);
   return (
     <div className="math-block">
-      <span
-        className="math-render"
-        dangerouslySetInnerHTML={{ __html: html }}
-      />
+      <span className="math-render" ref={ref}>{tex}</span>
       {num ? <span className="math-num">({num})</span> : null}
     </div>
   );
 }
 
-// An OCR'd table (HTML). Cells may contain $...$ / $$...$$ math, which we
-// render in place with KaTeX's auto-render after mount.
-export function TableHtml({ html }: { html: string }) {
-  const ref = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    if (!ref.current) return;
-    try {
-      renderMathInElement(ref.current, {
-        delimiters: [
-          { left: "$$", right: "$$", display: true },
-          { left: "$", right: "$", display: false },
-        ],
-        throwOnError: false,
-      });
-    } catch {
-      /* leave raw text on failure */
-    }
-  }, [html]);
-  return (
-    <div
-      ref={ref}
-      className="table-html"
-      dangerouslySetInnerHTML={{ __html: html }}
-    />
-  );
-}
-
-// Inline math segment.
 function MathInline({ tex }: { tex: string }) {
-  const html = useMemo(() => render(tex, false), [tex]);
-  return (
-    <span className="math-render" dangerouslySetInnerHTML={{ __html: html }} />
-  );
+  const ref = useKatex(tex, false);
+  return <span className="math-render" ref={ref}>{tex}</span>;
 }
 
-// Matches inline ( \(...\)  or  $...$ ) and display ( \[...\] or $$...$$ ) math.
 const MATH_RE =
   /\$\$([\s\S]+?)\$\$|\\\[([\s\S]+?)\\\]|\\\(([\s\S]+?)\\\)|\$((?:\\.|[^$])+?)\$/g;
 
@@ -90,6 +76,37 @@ export function MathText({ text }: { text: string }) {
   );
 }
 
+// An OCR'd table (HTML). Cells may contain $...$ math, rendered on the client.
+export function TableHtml({ html }: { html: string }) {
+  const ref = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    el.querySelectorAll<HTMLElement>("td, th").forEach((cell) => {
+      const t = cell.textContent ?? "";
+      if (!t.includes("$")) return;
+      cell.innerHTML = t.replace(MATH_RE, (m, dd, br, pr, in1) => {
+        const tex = (dd ?? br ?? pr ?? in1 ?? "").trim();
+        if (!isMath(tex)) return m;
+        try {
+          return katex.renderToString(tex, {
+            displayMode: false,
+            throwOnError: false,
+            strict: false,
+            trust: true,
+            maxExpand: 1000,
+          });
+        } catch {
+          return m;
+        }
+      });
+    });
+  }, [html]);
+  return (
+    <div ref={ref} className="table-html" dangerouslySetInnerHTML={{ __html: html }} />
+  );
+}
+
 type Seg = { text: string; tex?: undefined } | { text?: undefined; tex: string; display: boolean };
 
 function splitMath(text: string): Seg[] {
@@ -98,7 +115,7 @@ function splitMath(text: string): Seg[] {
   for (const m of text.matchAll(MATH_RE)) {
     const idx = m.index ?? 0;
     if (idx > last) out.push({ text: text.slice(last, idx) });
-    const display = m[1] != null || m[2] != null; // $$...$$ or \[...\]
+    const display = m[1] != null || m[2] != null;
     const tex = (m[1] ?? m[2] ?? m[3] ?? m[4] ?? "").trim();
     out.push({ tex, display });
     last = idx + m[0].length;

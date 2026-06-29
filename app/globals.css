@@ -476,33 +476,7 @@ html, body {
 }
 .note-area::placeholder { color: #b8b3a0; }
 
-/* never let a wide equation/table push the whole page sideways */
-html, body { overflow-x: hidden; }
-.paper article p { overflow-wrap: break-word; }
-
 @media (max-width: 640px) {
-  .paper {
-    padding: 32px 16px calc(140px + env(safe-area-inset-bottom));
-  }
-  .paper-title { font-size: 1.5rem; }
-  .authors { font-size: 0.98rem; }
-  .sec { font-size: 1.2rem; }
-  .subsec { font-size: 1.04rem; }
-
-  /* justified text + hyphenation looks broken on narrow screens */
-  .paper article p { text-align: left; hyphens: manual; font-size: 1.04rem; line-height: 1.7; }
-
-  .abstract { padding: 16px 16px; border-radius: 8px; }
-  .abstract p { font-size: 0.95rem; }
-
-  /* wide math/tables: go edge-to-edge and scroll horizontally inside */
-  .math-block, .table-html {
-    margin-left: -16px;
-    margin-right: -16px;
-    padding: 0 16px;
-    -webkit-overflow-scrolling: touch;
-  }
-  .math-block .katex { font-size: 1em; }
-  .table-html table { font-size: 0.78em; }
-  .table-html th, .table-html td { padding: 0.35em 0.5em; }
+  .paper { padding: 40px 18px 140px; }
+  .paper-title { font-size: 1.6rem; }
 }

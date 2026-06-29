@@ -20,3 +20,4 @@ sources/*.pdf
 
 # local conversion output (app uses data/papers + public/figures)
 md/
+mathpix_out/
