@@ -17,3 +17,6 @@ __pycache__/
 
 # sources/ is just a conversion drop-zone; the served copies live in public/pdfs
 sources/*.pdf
+
+# local conversion output (app uses data/papers + public/figures)
+md/

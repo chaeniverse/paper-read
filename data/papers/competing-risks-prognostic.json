@@ -102,6 +102,10 @@
   },
   {
    "type": "p",
+   "text": "ards model for the subdistribution hazard of the event of interest,"
+  },
+  {
+   "type": "p",
    "text": "defined as"
   },
   {
@@ -110,7 +114,7 @@
   },
   {
    "type": "p",
-   "text": ". Given covariates $Z$ , the model is of the form $\\bar{\\lambda}_1(t|Z) = \\bar{\\lambda}_{1,0}(t) \\exp(\\beta^t Z)$ where $\\bar{\\lambda}_{1,0}(t)$ is the baseline subdistribution hazard for the event of interest. Solving for the cumulative incidence function"
+   "text": "Given covariates $Z$ , the model is of the form $\\bar{\\lambda}_1(t|Z) = \\bar{\\lambda}_{1,0}(t) \\exp(\\beta'Z)$ where $\\bar{\\lambda}_{1,0}(t)$ is the baseline subdistribution hazard for the event of interest. Solving for the cumulative incidence function"
   },
   {
    "type": "math",
@@ -220,11 +224,11 @@
   },
   {
    "type": "table-html",
-   "html": "<table><thead><tr><th>Parameter</th><th>sHR (95% CI)</th></tr></thead><tbody><tr><td>Age (by 10 years)</td><td>1.64 (1.47–1.82)</td></tr><tr><td>On blood pressure lowering medication (offset at<br>a systolic blood pressure of 120 mm Hg)</td><td>1.69 (1.26–2.25)</td></tr><tr><td>Systolic blood pressure (by 10 mm Hg)—for<br>patients without medication</td><td>1.13 (1.07–1.20)</td></tr><tr><td>Systolic blood pressure (by 10 mm Hg)—for<br>patients with medication</td><td>1.05 (0.99–1.12)</td></tr><tr><td>Diabetes mellitus</td><td>1.38 (1.07–1.79)</td></tr><tr><td>log(total cholesterol/HDL)</td><td>2.72 (2.01–3.70)</td></tr><tr><td>Current smoker</td><td>1.71 (1.36–2.15)</td></tr></tbody></table>"
+   "html": "<table><thead><tr><th>Parameter</th><th>sHR (95% CI)</th><th>Parameter</th><th>Event of<br>Interest: CHD<br>HR (95% CI)</th><th>Competing<br>Event: Non-<br>CHD Death<br>HR (95% CI)</th></tr></thead><tbody><tr><td>Age (by +10 years)</td><td>1.64 (1.47–1.82)</td><td>Age (by +10 years)</td><td>2.23 (1.99–2.51)</td><td>3.63 (3.37–3.92)</td></tr><tr><td>On blood pressure lowering medication (offset at a systolic blood pressure of 120 mm Hg)</td><td>1.69 (1.26–2.25)</td><td>On blood pressure lowering<br>medication (offset at a systolic blood pressure of 120 mm Hg)</td><td>1.73 (1.28–2.33)</td><td>1.17 (0.98–1.41)</td></tr><tr><td>Systolic blood pressure (by +10 mm Hg)—for patients without medication</td><td>1.13 (1.07–1.20)</td><td>Systolic blood pressure (by +10 mm<br>Hg)—for patients without medication</td><td>1.14 (1.07–1.20)</td><td>1.03 (1.00–1.07)</td></tr><tr><td>Systolic blood pressure (by +10 mm Hg)—for patients with medication</td><td>1.05 (0.99–1.12)</td><td>Systolic blood pressure (by +10 mm<br>Hg)—for patients with medication</td><td>1.05 (0.99–1.12)</td><td>1.03 (0.99–1.07)</td></tr><tr><td>Diabetes mellitus</td><td>1.38 (1.07–1.79)</td><td>Diabetes mellitus</td><td>1.52 (1.19–1.94)</td><td>1.29 (1.10–1.52)</td></tr><tr><td>log(total cholesterol/HDL)</td><td>2.72 (2.01–3.70)</td><td>log(total cholesterol/HDL)</td><td>2.51 (1.85–3.42)</td><td>0.64 (0.53–0.78)</td></tr><tr><td>Current smoker</td><td>1.71 (1.36–2.15)</td><td>Current smoker</td><td>1.96 (1.56–2.48)</td><td>1.91 (1.65–2.22)</td></tr></tbody></table>"
   },
   {
    "type": "p",
-   "text": "Baseline cumulative subdistribution hazard at 10 years is 0.0302. Baseline refers to a woman of age 60 with a systolic blood pressure of 120, a log(Cholesterol/HDL) of 1.61 ( log(5)) who is nonsmoking, without blood-pressure lowering medication, and without diabetes."
+   "text": "Baseline cumulative subdistribution hazard at 10 years is 0.0302. Baseline refers to a woman of age 60 with a systolic blood pressure of 120, a log(Cholesterol/HDL) of 1.61 (- log(5)) who is nonsmoking, without blood-pressure lowering medication, and without diabetes."
   },
   {
    "type": "p",
@@ -237,10 +241,6 @@
   {
    "type": "p",
    "text": "TABLE 2. Cause-specific Cox Models For CHD (Event of Interest) and Competing Non-CHD Death (Competing Risk)"
-  },
-  {
-   "type": "table-html",
-   "html": "<table><thead><tr><th>Parameter</th><th>Event of<br>Interest: CHD<br>HR (95% CI)</th><th>Competing<br>Event: Non<br>CHD Death<br>HR (95% CI)</th></tr></thead><tbody><tr><td>Age (by 10 years)</td><td></td><td>2.23 (1.99–2.51) 3.63 (3.37–3.92)</td></tr><tr><td>On blood pressure lowering</td><td></td><td>1.73 (1.28–2.33) 1.17 (0.98–1.41)</td></tr><tr><td>medication (offset at a systolic blood pressure of 120 mm Hg)</td><td></td><td></td></tr><tr><td>Systolic blood pressure (by 10 mm</td><td></td><td>1.14 (1.07–1.20) 1.03 (1.00–1.07)</td></tr><tr><td>Hg)—for patients without medication</td><td></td><td></td></tr><tr><td>Systolic blood pressure (by 10 mm<br>Hg)—for patients with medication</td><td></td><td>1.05 (0.99–1.12) 1.03 (0.99–1.07)</td></tr><tr><td>Diabetes mellitus</td><td></td><td>1.52 (1.19–1.94) 1.29 (1.10–1.52)</td></tr><tr><td>log(total cholesterol/HDL)</td><td></td><td>2.51 (1.85–3.42) 0.64 (0.53–0.78)</td></tr><tr><td>Current smoker</td><td></td><td>1.96 (1.56–2.48) 1.91 (1.65–2.22)</td></tr></tbody></table>"
   },
   {
    "type": "figure",
@@ -261,7 +261,7 @@
   },
   {
    "type": "table-html",
-   "html": "<table><thead><tr><th></th><th>Fine and Gray Model</th><th>Standard Cox Model</th><th>Cause-specific Hazards Model</th></tr></thead><tbody><tr><td></td><td>Index (95% CI)</td><td>Index (95% CI)</td><td>Index (95% CI)</td></tr><tr><td>c index <sup>a</sup> Royston and Sauerbrei's D <sup>a</sup></td><td>0.70 (0.68–0.73)</td><td>0.70 (0.68–0.73)</td><td>0.70 (0.68–0.73)</td></tr><tr><td></td><td>1.17 (1.02–1.32)</td><td>1.15 (1.00–1.30)</td><td>1.17 <sup>b</sup> (1.02–1.32)</td></tr></tbody></table>"
+   "html": "<table><thead><tr><th></th><th>Fine and Gray Model</th><th>Standard Cox Model</th><th>Cause-specific Hazards Model</th></tr></thead><tbody><tr><td></td><td>Index (95% CI)</td><td>Index (95% CI)</td><td>Index (95% CI)</td></tr><tr><td>c indexa</td><td>0.70 (0.68–0.73)</td><td>0.70 (0.68–0.73)</td><td>0.70 (0.68–0.73)</td></tr><tr><td>Royston and Sauerbrei's Da</td><td>1.17 (1.02–1.32)</td><td>1.15 (1.00–1.30)</td><td>1.17b (1.02–1.32)</td></tr></tbody></table>"
   },
   {
    "type": "p",

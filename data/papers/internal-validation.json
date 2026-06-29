@@ -136,7 +136,7 @@
   },
   {
    "type": "table-html",
-   "html": "<table><thead><tr><th>Method</th><th></th><th>Training sample</th><th>Test sample</th><th>Estimated performance</th><th>Repetitions</th></tr></thead><tbody><tr><td>Apparent</td><td></td><td>Original</td><td>Original</td><td>Original sample</td><td>1</td></tr><tr><td>Split-sample</td><td>50%</td><td>50% of original</td><td>Independent: 50% of original</td><td>Test</td><td>1</td></tr><tr><td>_</td><td>33%</td><td>66.67% of original</td><td>Independent: 33.33% of original</td><td>Test</td><td>1</td></tr><tr><td>Cross-validation</td><td>50%</td><td>50% of original</td><td>Independent: 50% of original</td><td>Average(test)</td><td>2</td></tr><tr><td></td><td>10%</td><td>90% of original</td><td>Independent: 10% of original</td><td>Average(test)</td><td>10</td></tr><tr><td></td><td>10×10%</td><td>90% of original</td><td>Independent: 10% of original</td><td>Average(test)</td><td>100</td></tr><tr><td>Bootstrapping</td><td>Regular</td><td>Bootstrap</td><td>Original</td><td>Apparent - average(bootstrap-test)</td><td>$100^{a}$</td></tr><tr><td></td><td>.632</td><td>Bootstrap</td><td>Independent: subjects not sampled in bootstrap</td><td>$0.368 \\times \\text{Apparent} + 0.632 \\times \\text{average(test)}$</td><td>$100^{a}$</td></tr><tr><td></td><td>.632+</td><td>Bootstrap</td><td>Independent: subjects not sampled in bootstrap</td><td>$(1-w) \\times \\text{Apparent} + w \\times \\text{average(test)}^{\\text{b}}$</td><td>$100^{a}$</td></tr></tbody></table>"
+   "html": "<table><thead><tr><th>Method</th><th></th><th>Training sample</th><th>Test sample</th><th>Estimated performance</th><th>Repetitions</th></tr></thead><tbody><tr><td>Apparent</td><td></td><td>Original</td><td>Original</td><td>Original sample</td><td>1</td></tr><tr><td>Split-sample</td><td>50%</td><td>50% of original</td><td>Independent: 50% of original</td><td>Test</td><td>1</td></tr><tr><td></td><td>33%</td><td>66.67% of original</td><td>Independent: 33.33% of original</td><td>Test</td><td>1</td></tr><tr><td>Cross-validation</td><td>50%</td><td>50% of original</td><td>Independent: 50% of original</td><td>Average(test)</td><td>2</td></tr><tr><td></td><td>10%</td><td>90% of original</td><td>Independent: 10% of original</td><td>Average(test)</td><td>10</td></tr><tr><td></td><td>10×10%</td><td>90% of original</td><td>Independent: 10% of original</td><td>Average(test)</td><td>100</td></tr><tr><td>Bootstrapping</td><td>Regular</td><td>Bootstrap</td><td>Original</td><td>Apparent - average(bootstrap-test)</td><td>$100^{a}$</td></tr><tr><td></td><td>.632</td><td>Bootstrap</td><td>Independent: subjects not sampled in bootstrap</td><td>$0.368 \\times \\text{Apparent} + 0.632 \\times \\text{average(test)}$</td><td>$100^{a}$</td></tr><tr><td></td><td>.632+</td><td>Bootstrap</td><td>Independent: subjects not sampled in bootstrap</td><td>$(1-w) \\times \\text{Apparent} + w \\times \\text{average(test)}^{\\text{b}}$</td><td>$100^{a}$</td></tr></tbody></table>"
   },
   {
    "type": "p",
@@ -253,7 +253,7 @@
   },
   {
    "type": "p",
-   "text": "Table 2 Observed bias and square root of the mean squared error for various internal validation procedures, EPV - 10 (n -1145, 80 deaths)"
+   "text": "Table 2 Observed bias and square root of the mean squared error for various internal validation procedures, EPV -10 (n - 1145, 80 deaths)"
   },
   {
    "type": "table-html",
@@ -304,7 +304,7 @@
    "text": "In conclusion, assessments of internal validity should not be based on the split-sample approach, unless a very large sample is available. However, with a large sample size (e.g., EPV 40), optimism is small and the apparent estimates of model performance are attractive because of their stability. Optimal estimates of internal validity of logistic regression models constructed in smaller samples (e.g., EPV 10) are generally obtained with the regular variant of bootstrapping, which can readily incorporate model specification steps such as stepwise selection of predictor variables. We hope that this study encourages the use of advanced statistical procedures in predictive modeling with logistic regression."
   },
   {
-   "type": "h3",
+   "type": "h2",
    "num": "",
    "text": "Acknowledgments"
   },
