@@ -55,8 +55,11 @@ function MathInline({ tex }: { tex: string }) {
   return <span className="math-render" ref={ref}>{tex}</span>;
 }
 
+// NOTE: the inline `$...$` branch uses `[^$]` (linear) rather than `(?:\\.|[^$])`
+// — the latter is ambiguous on backslashes and backtracks catastrophically on
+// backslash-heavy LaTeX (\frac, \left, ...), which froze the build.
 const MATH_RE =
-  /\$\$([\s\S]+?)\$\$|\\\[([\s\S]+?)\\\]|\\\(([\s\S]+?)\\\)|\$((?:\\.|[^$])+?)\$/g;
+  /\$\$([\s\S]+?)\$\$|\\\[([\s\S]+?)\\\]|\\\(([\s\S]+?)\\\)|\$([^$\n]+?)\$/g;
 
 // Render a paragraph string that may contain inline (and stray display) math.
 export function MathText({ text }: { text: string }) {
